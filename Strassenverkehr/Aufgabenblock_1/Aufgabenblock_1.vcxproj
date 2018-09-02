@@ -115,6 +115,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Fahrrad.h" />
+    <ClInclude Include="Fahrzeug.h" />
+    <ClInclude Include="PKW.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Fahrrad.cpp" />
+    <ClCompile Include="Fahrzeug.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="PKW.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
