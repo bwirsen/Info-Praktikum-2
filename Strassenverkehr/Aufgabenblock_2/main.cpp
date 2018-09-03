@@ -1,20 +1,21 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h> 
+#include <vector>
+#include "Fahrrad.h"
 #include "Fahrzeug.h"
 #include "PKW.h"
-#include "Fahrrad.h"
-#include <vector>
-
+#include "Weg.h"
 void wait();
 void vAufgabe_1();
 void vAufgabe_1_deb();
 void vAufgabe_2();
 void vAufgabe_3();
+void vAufgabe_4();
 
 //Überladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu können. Allgemeine Definition 
 //in der main.cpp, da jede Überladung speziell in jeder Subklasse definiert werden muss
-ostream& operator << (ostream& out, Fahrzeug& fahrzeug);
+ostream& operator << (ostream& out, AktivesVO& aVO);
 
 extern double dGlobaleZeit = 0.0;
 
@@ -24,7 +25,7 @@ int main(void) {
 	char cAuswahl;
 	while (true) {
 
-		cout << "Aufgabe 1, 2, oder 3? Beenden (q)" << endl;
+		cout << "Aufgabe 1, 2, 3 oder 4? Beenden (q). Warnung: Aufgabenblock 2" << endl;
 		cin >> cAuswahl;
 
 		switch (cAuswahl) {
@@ -34,6 +35,8 @@ int main(void) {
 		case '2': vAufgabe_2();
 			break;
 		case '3': vAufgabe_3();
+			break;
+		case '4' : vAufgabe_4();
 			break;
 		case 'q':
 			return 0;
@@ -141,7 +144,7 @@ void vAufgabe_2()
 
 	for (int i = 0; i < 8; i++) {
 
-		dGlobaleZeit = dGlobaleZeit + dTakt;
+		dGlobaleZeit += dTakt;
 		
 		for (vector<Fahrzeug*>::iterator it = vektor.begin(); it != vektor.end(); it++) {
 
@@ -184,15 +187,33 @@ void vAufgabe_3() {
 	cout << *pkw_b << endl;
 	cout << *pkw_a << endl;
 
-
-
-
-
 }
-ostream& operator << (std::ostream& out, Fahrzeug& fahrzeug)
+
+void vAufgabe_4()
+{
+	Weg* weg1 = new Weg("weg1", 1719);   
+	PKW* pkw = new PKW("Audi", 300, 2);
+	Fahrrad* fr = new Fahrrad("KTM", 25);
+	
+	weg1->vAnnahme(pkw);
+	weg1->vAnnahme(fr);
+	cout << *weg1 << endl;
+	double dTakt = 0.5;
+	Fahrzeug::vAusgabeKopf();
+	for (int i = 0; i < 20; i++) 
+	{
+		dGlobaleZeit += dTakt;
+		weg1->vAbfertigung();
+		cout << *pkw << endl << *fr << endl;
+	}
+	
+}
+
+
+ostream& operator << (std::ostream& out, AktivesVO& aVO)
 {
 	//übergabe von out an die Memberüberladungen, damit out gefüllt wird
-	return fahrzeug.ostreamAusgabe(out);
+	return aVO.ostreamAusgabe(out);
 }
 
 void wait() {

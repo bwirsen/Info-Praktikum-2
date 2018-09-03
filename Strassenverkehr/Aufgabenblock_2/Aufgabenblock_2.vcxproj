@@ -115,16 +115,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AktivesVO.cpp" />
     <ClCompile Include="Fahrrad.cpp" />
     <ClCompile Include="Fahrzeug.cpp" />
+    <ClCompile Include="FzgVerhalten.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PKW.cpp" />
+    <ClCompile Include="Weg.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AktivesVO.h" />
     <ClInclude Include="Fahrrad.h" />
     <ClInclude Include="Fahrzeug.h" />
-    <ClInclude Include="main.h" />
+    <ClInclude Include="FzgVerhalten.h" />
     <ClInclude Include="PKW.h" />
+    <ClInclude Include="Weg.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

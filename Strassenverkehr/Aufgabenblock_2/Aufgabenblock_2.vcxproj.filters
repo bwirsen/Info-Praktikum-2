@@ -27,6 +27,15 @@
     <ClCompile Include="PKW.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="AktivesVO.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="Weg.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="FzgVerhalten.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fahrrad.h">
@@ -35,10 +44,16 @@
     <ClInclude Include="Fahrzeug.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
+    <ClInclude Include="PKW.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="PKW.h">
+    <ClInclude Include="AktivesVO.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Weg.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="FzgVerhalten.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>

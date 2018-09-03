@@ -1,56 +1,41 @@
 #include "Fahrzeug.h"
 
-//static Variable zur Durchnumerierung definieren
-int Fahrzeug::p_iMaxID = 0;
-
 void Fahrzeug::vInitialisierung() {
-	p_iID = ++p_iMaxID;
-	p_sName = "";
 	p_dGesamtStrecke = 0;
 	p_dGesamtZeit = 0;
 	p_dMaxGeschwindigkeit = 0;
-	p_dZeit = 0;
+	p_dAbschnittStrecke = 0;
+	p_pVerhalten = NULL;
 }
 
-Fahrzeug::Fahrzeug() : p_sName("")
+
+Fahrzeug::Fahrzeug(string name) : AktivesVO(name)
 {
 	vInitialisierung();
-	//cout << "ERZEUGE" << endl << "Name: kein Name" << endl << "ID:" << p_iID << endl;
 }
 
-Fahrzeug::Fahrzeug(string name)
+Fahrzeug::Fahrzeug(string name, double vMax) : AktivesVO(name)
 {
 	vInitialisierung();
-	p_sName = name;
-	//cout << "ERZEUGE" << endl << "Name:" << p_sName << endl << "ID:" << p_iID << endl;
-
-}
-
-Fahrzeug::Fahrzeug(string name, double vMax)
-{
-	vInitialisierung();
-	p_sName = name;
 	p_dMaxGeschwindigkeit = vMax;
 }
 
 
 Fahrzeug::~Fahrzeug()
 {
-	cout << "ENTFERNE" << endl << "Name:" << p_sName << endl << "ID:" << p_iID << endl;
 }
 
 void Fahrzeug::vAusgabe()
 {
-
-	cout << setprecision(2) << fixed << setw(5) << setiosflags(ios::left) << this->p_iID << setw(12) << this->p_sName
-		<< setw(4) << ":" << setw(12) << this->p_dMaxGeschwindigkeit << setw(10) << this->dGeschwindigkeit() << setw(18) << this->p_dGesamtStrecke
+	AktivesVO::vAusgabe();
+	cout << setw(12) << this->p_dMaxGeschwindigkeit << setw(10) << this->dGeschwindigkeit() << setw(18) << this->p_dGesamtStrecke << setw(18) << this->p_dAbschnittStrecke
 		<< setw(14) << this->p_dGesamtZeit << setw(8) << this->p_dZeit;
 }
 
 void Fahrzeug::vAusgabeKopf() {
 
 	cout << setw(5) << setiosflags(ios::left) << "ID" << setw(12) << "Name"
-		<< setw(4) << ":" << setw(12) << "MaxKm/h" << setw(10) << "Km/h" << setw(18) << "GesamtStrecke"
+		<< setw(4) << ":" << setw(12) << "MaxKm/h" << setw(10) << "Km/h" << setw(18) << "GesamtStrecke" << setw(18) << "StreckenAbschnitt"
 		<< setw(14) << "GesamtZeit" << setw(8) << "Zeit" << setw(12) << "Verbrauch" << setw(12) << "Tankinhalt" << endl << endl;
 
 }
@@ -63,10 +48,15 @@ void Fahrzeug::vAbfertigung()
 	}
 	// sonst abfertigen
 	else {
-		double dDelta = dGlobaleZeit - this->p_dZeit;
-		this->p_dGesamtStrecke += this->dGeschwindigkeit() * dDelta;	// s = v*t
+		double dDeltaZeit = dGlobaleZeit - this->p_dZeit;  // Zeitabschnitt
+		
+		double dDeltaStrecke = this->p_pVerhalten->dStrecke(this, dDeltaZeit);
+
+		this->p_dGesamtStrecke += dDeltaStrecke;	
+		this->p_dAbschnittStrecke += dDeltaStrecke;
+
 		this->p_dZeit = dGlobaleZeit;
-		this->p_dGesamtZeit += dDelta;									// +ZeitDiff	 
+		this->p_dGesamtZeit += dDeltaZeit;									// +ZeitDiff	 
 	}
 }
 
@@ -84,8 +74,7 @@ double Fahrzeug::dGeschwindigkeit() {
 //Überladung von out für Fahrzeug
 ostream& Fahrzeug::ostreamAusgabe(ostream& out)
 {
-	out << setprecision(2) << fixed << setw(5) << setiosflags(ios::left) << this->p_iID << setw(12) << this->p_sName
-		<< setw(4) << ":" << setw(12) << this->p_dMaxGeschwindigkeit << setw(10) << this->dGeschwindigkeit() << setw(18) << this->p_dGesamtStrecke
+	AktivesVO::ostreamAusgabe(out) << setw(12) << this->p_dMaxGeschwindigkeit << setw(10) << this->dGeschwindigkeit() << setw(18) << this->p_dGesamtStrecke << setw(18) << this->p_dAbschnittStrecke
 		<< setw(14) << this->p_dGesamtZeit << setw(8) << this->p_dZeit;
 
 	return out;
@@ -99,6 +88,13 @@ bool Fahrzeug::operator<(const Fahrzeug& fahrzeug)
 	return false;
 }
 
+void Fahrzeug::vNeueStrecke(Weg* pWeg)
+{
+	delete p_pVerhalten;
+	this->p_pVerhalten = new FzgVerhalten(pWeg);
+	this->p_dAbschnittStrecke = 0;
+}
+
 Fahrzeug& Fahrzeug::operator=(const Fahrzeug& fahrzeug) 
 {
 	this->vInitialisierung();			//Fahrzeug zurücksetzen mit neuer ID, wichtig zur Identifikation
@@ -106,4 +102,14 @@ Fahrzeug& Fahrzeug::operator=(const Fahrzeug& fahrzeug)
 	this->p_dMaxGeschwindigkeit = fahrzeug.p_dMaxGeschwindigkeit; //selbe Begründung wie Name
 		
 	return *this;	//This-Pointer, da Referenz
+}
+
+double Fahrzeug::getMaxGeschwindigkeit()
+{
+	return this->p_dMaxGeschwindigkeit;
+}
+
+double Fahrzeug::getAbschnittStrecke() {
+
+	return this->p_dAbschnittStrecke;
 }
