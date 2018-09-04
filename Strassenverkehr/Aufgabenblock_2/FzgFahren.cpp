@@ -19,9 +19,9 @@ double FzgFahren::dStrecke(Fahrzeug* pFahrzeug, double dZeit)
 {
 	double dRestStrecke = this->p_pWeg->getLänge() - pFahrzeug->getAbschnittStrecke();	//restliche Strecke bis zum Wegende
 
-	if (pFahrzeug->getAbschnittStrecke() != this->p_pWeg->getLänge())						//falls noch nicht am Ende
+	if (pFahrzeug->getAbschnittStrecke() != this->p_pWeg->getLänge())					//falls noch nicht am Ende
 	{
-		double dStrecke = pFahrzeug->getMaxGeschwindigkeit() * dZeit;					//hinzukommende gefahrene Strecke
+		double dStrecke = pFahrzeug->dGeschwindigkeit() * dZeit;						//hinzukommende gefahrene Strecke
 
 		if (dStrecke >= dRestStrecke)													//falls Rest kleiner als zu fahrende Strecke...
 		{
