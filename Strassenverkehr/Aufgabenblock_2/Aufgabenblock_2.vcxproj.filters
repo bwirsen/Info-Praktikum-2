@@ -36,6 +36,12 @@
     <ClCompile Include="FzgVerhalten.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="FzgParken.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="FzgFahren.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fahrrad.h">
@@ -56,5 +62,14 @@
     <ClInclude Include="FzgVerhalten.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="FzgParken.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="FzgFahren.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

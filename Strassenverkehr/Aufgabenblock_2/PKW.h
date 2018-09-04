@@ -10,8 +10,8 @@ public:
 	double dTanken(double dMenge = -1);
 	void vAbfertigung();
 	void vAusgabe();
-double dGeschwindigkeit();
-ostream & ostreamAusgabe(ostream & out);
+	double dGeschwindigkeit();
+	ostream& ostreamAusgabe(ostream& out);
 
 private:
 	double p_dVerbrauch;

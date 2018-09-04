@@ -118,6 +118,8 @@
     <ClCompile Include="AktivesVO.cpp" />
     <ClCompile Include="Fahrrad.cpp" />
     <ClCompile Include="Fahrzeug.cpp" />
+    <ClCompile Include="FzgFahren.cpp" />
+    <ClCompile Include="FzgParken.cpp" />
     <ClCompile Include="FzgVerhalten.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PKW.cpp" />
@@ -127,9 +129,14 @@
     <ClInclude Include="AktivesVO.h" />
     <ClInclude Include="Fahrrad.h" />
     <ClInclude Include="Fahrzeug.h" />
+    <ClInclude Include="FzgFahren.h" />
+    <ClInclude Include="FzgParken.h" />
     <ClInclude Include="FzgVerhalten.h" />
     <ClInclude Include="PKW.h" />
     <ClInclude Include="Weg.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

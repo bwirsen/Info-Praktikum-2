@@ -21,7 +21,7 @@ double PKW::dTanken(double dMenge)
 		dFüllmenge = this->p_dTankvolumen - this->p_dTankinhalt;
 		this->p_dTankinhalt = this->p_dTankvolumen;
 		return dFüllmenge;
-	}
+	}// sonst wie gewünscht füllen
 	else {
 		this->p_dTankinhalt += dMenge;
 		return dMenge;
@@ -62,9 +62,22 @@ void PKW::vAusgabe() {
 
 double PKW::dGeschwindigkeit() {
 	
-	//PKW fährt immer mit vMax
-	return this->p_dMaxGeschwindigkeit;
+	//Geschwindigkietslimit aus dem Verhalten, bzw dem Weg im Verhalten ziehen - wichtig enum, daher switch möglich.
+	Begrenzung p_eLimit = this->p_pVerhalten->getWegPointer()->getBegrenzung();
+	
+	switch (p_eLimit) {
 
+	case 0: return 50; //Innerorts
+		break;
+	case 1: return 100;	//Landstraße
+		break;
+	case 2:	return this->p_dMaxGeschwindigkeit;	//Autobahn
+		break;
+	default:			//Tritt nicht auf, aber zu Fehlererkennung nützlich
+		return 0;
+
+	}
+	
 }
 
 ostream& PKW::ostreamAusgabe(ostream& out) {

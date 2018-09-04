@@ -16,7 +16,9 @@ public:
 	ostream& ostreamAusgabe(ostream& out);
 	void vAbfertigung();
 	void vAnnahme(Fahrzeug * pFahrzeug);
+	void vAnnahme(Fahrzeug* pFahrzeug, double dStartzeitpunkt);
 	double getLänge();
+	Begrenzung getBegrenzung();
 	
 
 private:

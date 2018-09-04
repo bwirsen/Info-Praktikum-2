@@ -1,15 +1,17 @@
 #pragma once
 #include "Weg.h"
 
+
 class FzgVerhalten
 {
 public:
 	FzgVerhalten();
 	FzgVerhalten(Weg* p_pWeg);
-	~FzgVerhalten();
-	virtual double dStrecke(Fahrzeug* pFahrzeug, double dZeit);
+	virtual ~FzgVerhalten();
+	virtual double dStrecke(Fahrzeug* pFahrzeug, double dZeit) = 0;
+	virtual Weg* getWegPointer();
 
-private:
+protected:
 	Weg* p_pWeg;
 
 };

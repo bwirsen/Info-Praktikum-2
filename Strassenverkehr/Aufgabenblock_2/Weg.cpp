@@ -44,7 +44,18 @@ void Weg::vAnnahme(Fahrzeug* pFahrzeug)
 	pFahrzeug->vNeueStrecke(this);
 }
 
+void Weg::vAnnahme(Fahrzeug* pFahrzeug, double dStartzeitpunkt)
+{
+	this->p_pFahrzeuge.push_back(pFahrzeug);
+	pFahrzeug->vNeueStrecke(this, dStartzeitpunkt);
+}
+
 double Weg::getLänge()
 {
 	return this->p_dLänge;
+}
+
+Begrenzung Weg::getBegrenzung()
+{
+	return p_eLimit;
 }

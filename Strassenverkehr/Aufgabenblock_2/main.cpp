@@ -191,12 +191,14 @@ void vAufgabe_3() {
 
 void vAufgabe_4()
 {
-	Weg* weg1 = new Weg("weg1", 1719);   
+	Weg* weg1 = new Weg("weg1", 1719, Landstraße);   
 	PKW* pkw = new PKW("Audi", 300, 2);
+	PKW* pkw2 = new PKW("BMW", 250, 3);
 	Fahrrad* fr = new Fahrrad("KTM", 25);
 	
-	weg1->vAnnahme(pkw);
-	weg1->vAnnahme(fr);
+	weg1->vAnnahme(pkw);	//Audi fährt mit Begrenzung
+	weg1->vAnnahme(fr);		
+	weg1->vAnnahme(pkw2, 2);	//BMW wartet 2 Stunden
 	cout << *weg1 << endl;
 	double dTakt = 0.5;
 	Fahrzeug::vAusgabeKopf();
@@ -204,7 +206,7 @@ void vAufgabe_4()
 	{
 		dGlobaleZeit += dTakt;
 		weg1->vAbfertigung();
-		cout << *pkw << endl << *fr << endl;
+		cout << *pkw << endl << *pkw2 << endl << *fr << endl;
 	}
 	
 }

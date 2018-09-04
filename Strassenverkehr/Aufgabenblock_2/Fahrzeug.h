@@ -2,8 +2,11 @@
 #include <iostream>
 #include <string>
 #include <iomanip>
+
 #include "AktivesVO.h"
-#include "FzgVerhalten.h"
+//#include "FzgVerhalten.h"
+#include "FzgFahren.h"
+#include "FzgParken.h"
 
 using namespace std;
 extern double dGlobaleZeit;
@@ -22,6 +25,7 @@ public:
 	virtual ostream& ostreamAusgabe(ostream& out);
 	virtual bool operator<(const Fahrzeug& fahrzeug);
 	virtual void vNeueStrecke(Weg* pWeg);
+	virtual void vNeueStrecke(Weg* pWeg, double dStartzeitpunkt);
 	Fahrzeug& operator=(const Fahrzeug & fahrzeug);
 	double getMaxGeschwindigkeit();
 	double getAbschnittStrecke();

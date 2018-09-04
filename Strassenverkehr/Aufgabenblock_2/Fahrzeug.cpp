@@ -91,7 +91,14 @@ bool Fahrzeug::operator<(const Fahrzeug& fahrzeug)
 void Fahrzeug::vNeueStrecke(Weg* pWeg)
 {
 	delete p_pVerhalten;
-	this->p_pVerhalten = new FzgVerhalten(pWeg);
+	this->p_pVerhalten = new FzgFahren(pWeg);
+	this->p_dAbschnittStrecke = 0;
+}
+
+void Fahrzeug::vNeueStrecke(Weg * pWeg, double dStartzeitpunkt)
+{
+	delete p_pVerhalten;
+	this->p_pVerhalten = new FzgParken(pWeg, dStartzeitpunkt);
 	this->p_dAbschnittStrecke = 0;
 }
 
