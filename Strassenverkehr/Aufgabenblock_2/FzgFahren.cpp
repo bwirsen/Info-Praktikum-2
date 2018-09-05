@@ -31,10 +31,14 @@ double FzgFahren::dStrecke(Fahrzeug* pFahrzeug, double dZeit)
 			return dStrecke;															//sonst fahre so viel wie geht
 	}
 
+	//Ausnahme werfen, da Strecke zu Ende
 
+	throw new Streckenende(pFahrzeug, this->p_pWeg);  //pointer auf Fahrausnahme
+
+	/*
 	cout << endl << "WARNING: EXIT EXCEPTION" << endl;
 	cin.ignore();
 	cin.ignore();
-
-	exit(1);	//falls kein return, also der Weg zu Ende ist, beende das Programm
+	exit(1);	//falls kein return, also der Weg zu Ende ist, beende das Programm 
+	*/
 }

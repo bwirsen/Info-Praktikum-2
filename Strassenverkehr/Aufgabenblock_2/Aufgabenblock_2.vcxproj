@@ -116,23 +116,29 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AktivesVO.cpp" />
+    <ClCompile Include="FahrAusnahme.cpp" />
     <ClCompile Include="Fahrrad.cpp" />
     <ClCompile Include="Fahrzeug.cpp" />
     <ClCompile Include="FzgFahren.cpp" />
     <ClCompile Include="FzgParken.cpp" />
     <ClCompile Include="FzgVerhalten.cpp" />
+    <ClCompile Include="Losfahren.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PKW.cpp" />
+    <ClCompile Include="Streckenende.cpp" />
     <ClCompile Include="Weg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AktivesVO.h" />
+    <ClInclude Include="FahrAusnahme.h" />
     <ClInclude Include="Fahrrad.h" />
     <ClInclude Include="Fahrzeug.h" />
     <ClInclude Include="FzgFahren.h" />
     <ClInclude Include="FzgParken.h" />
     <ClInclude Include="FzgVerhalten.h" />
+    <ClInclude Include="Losfahren.h" />
     <ClInclude Include="PKW.h" />
+    <ClInclude Include="Streckenende.h" />
     <ClInclude Include="Weg.h" />
   </ItemGroup>
   <ItemGroup>

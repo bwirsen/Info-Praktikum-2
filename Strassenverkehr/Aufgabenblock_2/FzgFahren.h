@@ -1,6 +1,7 @@
 #pragma once
 #include "FzgVerhalten.h"
 #include "Fahrzeug.h"
+#include "Streckenende.h"
 
 class FzgFahren :
 	public FzgVerhalten

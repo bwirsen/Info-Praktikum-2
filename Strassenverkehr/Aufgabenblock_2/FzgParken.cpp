@@ -6,7 +6,7 @@ FzgParken::FzgParken()
 {
 }
 
-FzgParken::FzgParken(Weg * p_pWeg, double dStartZeit) : FzgVerhalten(p_pWeg), dStartzeitpunkt(dStartZeit)
+FzgParken::FzgParken(Weg* p_pWeg, double dStartZeit) : FzgVerhalten(p_pWeg), dStartzeitpunkt(dStartZeit)
 {
 }
 
@@ -23,10 +23,7 @@ double FzgParken::dStrecke(Fahrzeug * pFahrzeug, double dZeit)
 		return 0.0;
 	else
 	{
-		cout << "WARNUNG: EXCEPTION EXIT 2";
-		cin.ignore();
-		cin.ignore();
-		exit(2);
+		throw new Losfahren(pFahrzeug, this->p_pWeg); //fährt los, exception werfen
 	}
 		
 }

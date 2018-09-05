@@ -32,9 +32,15 @@ ostream & Weg::ostreamAusgabe(ostream & out)
 
 void Weg::vAbfertigung()
 {
-	for (list<Fahrzeug*>::iterator it = p_pFahrzeuge.begin(); it != p_pFahrzeuge.end(); it++)
+	for (list<Fahrzeug*>::iterator it = this->p_pFahrzeuge.begin(); it != this->p_pFahrzeuge.end(); it++)
 	{
-		(*it)->vAbfertigung();
+		try {
+			(*it)->vAbfertigung();
+		}
+		catch (FahrAusnahme* exception) //ein catch reicht: FahrAushname erhält pointer der Subklassen
+		{
+			exception->vBearbeiten(); //Ausnahme abarbeiten
+		}
 	}
 }
 

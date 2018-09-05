@@ -12,9 +12,10 @@ void vAufgabe_1_deb();
 void vAufgabe_2();
 void vAufgabe_3();
 void vAufgabe_4();
+void vAufgabe_5();
 
-//Überladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu können. Allgemeine Definition 
-//in der main.cpp, da jede Überladung speziell in jeder Subklasse definiert werden muss
+/*Überladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu können. Allgemeine Definition 
+in der main.cpp, da jede Überladung speziell in jeder Subklasse definiert werden muss */
 ostream& operator << (ostream& out, AktivesVO& aVO);
 
 extern double dGlobaleZeit = 0.0;
@@ -25,7 +26,7 @@ int main(void) {
 	char cAuswahl;
 	while (true) {
 
-		cout << "Aufgabe 1, 2, 3 oder 4? Beenden (q). Warnung: Aufgabenblock 2" << endl;
+		cout << "Aufgabe 1, 2, 3, 4 oder 5? Beenden (q). Warnung: Aufgabenblock 2" << endl;
 		cin >> cAuswahl;
 
 		switch (cAuswahl) {
@@ -37,6 +38,8 @@ int main(void) {
 		case '3': vAufgabe_3();
 			break;
 		case '4' : vAufgabe_4();
+			break;
+		case '5' : vAufgabe_5();
 			break;
 		case 'q':
 			return 0;
@@ -209,6 +212,28 @@ void vAufgabe_4()
 		cout << *pkw << endl << *pkw2 << endl << *fr << endl;
 	}
 	
+}
+
+void vAufgabe_5()
+{
+	Weg* weg1 = new Weg("weg1", 100, Innerorts);
+	PKW* pkw = new PKW("Lexus", 220, 2);
+	PKW* pkw2 = new PKW("Porsche", 250, 3);
+	Fahrrad* fr = new Fahrrad("KTM", 25);
+
+	weg1->vAnnahme(pkw, 3);
+	weg1->vAnnahme(pkw2);
+	weg1->vAnnahme(fr);
+
+	double dTakt = 0.25;
+	//double dTakt = 0.3;
+	Fahrzeug::vAusgabeKopf();
+	for (int i = 0; i < 20; i++)
+	{
+		dGlobaleZeit += dTakt;
+		weg1->vAbfertigung();
+		cout << *pkw << endl << *pkw2 << endl << *fr << endl;
+	}
 }
 
 

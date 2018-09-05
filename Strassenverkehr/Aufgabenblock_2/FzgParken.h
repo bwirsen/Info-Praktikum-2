@@ -1,5 +1,6 @@
 #pragma once
 #include "FzgVerhalten.h"
+#include "Losfahren.h"
 
 extern double dGlobaleZeit;
 
