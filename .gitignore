@@ -328,3 +328,7 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+/Strassenverkehr/Aufgabenblock_2/SimuClient.dll
+/Strassenverkehr/Aufgabenblock_2/SimuClient.lib
+/Strassenverkehr/Aufgabenblock_2/SimuServer.jar
+/Strassenverkehr/Aufgabenblock_2/SimuClient.h

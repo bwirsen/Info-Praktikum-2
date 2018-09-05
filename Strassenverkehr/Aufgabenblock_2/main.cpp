@@ -2,10 +2,13 @@
 #include <string>
 #include <stdlib.h> 
 #include <vector>
+
 #include "Fahrrad.h"
 #include "Fahrzeug.h"
 #include "PKW.h"
 #include "Weg.h"
+#include "SimuClient.h"
+
 void wait();
 void vAufgabe_1();
 void vAufgabe_1_deb();

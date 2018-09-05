@@ -86,8 +86,16 @@
     <ClInclude Include="Streckenende.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="SimuClient.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="SimuClient.lib">
+      <Filter>Headerdateien</Filter>
+    </Library>
   </ItemGroup>
 </Project>
