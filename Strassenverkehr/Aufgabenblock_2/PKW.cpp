@@ -47,6 +47,19 @@ void PKW::vAbfertigung()
 
 			this->p_dTankinhalt = 0;
 
+			/*	
+				Wichtig, auch hier noch mal eventuell eine Exception werfen.
+				Szenario: Fahrzeug fährt mit letzem Tankinhalt bis zum Streckenende. Erst mal wird die restliche Strecke returnt.
+				Die Exception aus dStrecke wird nur geworfen, falls kein wert returnt wird, also der Wagen bereits bei Abfertigung
+				am Ende steht, also quasi eine Abfertigung später.
+				Diese kann aber nur aufgerufen werden, falls noch Sprit im Tank ist.
+				Deshalb, falls Tank leer und Wagen am Ende auch Exception werfen!
+			*/
+
+			if (this->getAbschnittStrecke() == this->p_pVerhalten->getWegPointer()->getLänge()) {
+				throw new Streckenende(this, this->p_pVerhalten->getWegPointer());
+			}
+
 		}
 	}
 
@@ -77,7 +90,13 @@ double PKW::dGeschwindigkeit() {
 		return 0;
 
 	}
-	
+}
+
+void PKW::vZeichnen(Weg* pWeg) {
+
+	double dRelPosition = this->getAbschnittStrecke() / pWeg->getLänge(); //berechnet relativ zur Länge zurückgelegte Strecke
+	bZeichnePKW(this->getName(), pWeg->getName(), dRelPosition, this->dGeschwindigkeit(), this->p_dTankinhalt );
+
 }
 
 ostream& PKW::ostreamAusgabe(ostream& out) {

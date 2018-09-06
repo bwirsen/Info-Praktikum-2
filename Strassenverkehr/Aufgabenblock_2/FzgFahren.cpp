@@ -25,7 +25,7 @@ double FzgFahren::dStrecke(Fahrzeug* pFahrzeug, double dZeit)
 
 		if (dStrecke >= dRestStrecke)													//falls Rest kleiner als zu fahrende Strecke...
 		{
-			return dRestStrecke;														//...fahre nur bis zum Ende
+			return dRestStrecke; //...fahre nur bis zum Ende
 		}
 		else
 			return dStrecke;															//sonst fahre so viel wie geht

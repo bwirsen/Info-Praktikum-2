@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include "SimuClient.h"
 using namespace std;
 
 class AktivesVO

@@ -95,11 +95,15 @@ void Fahrzeug::vNeueStrecke(Weg* pWeg)
 	this->p_dAbschnittStrecke = 0;
 }
 
-void Fahrzeug::vNeueStrecke(Weg * pWeg, double dStartzeitpunkt)
+void Fahrzeug::vNeueStrecke(Weg* pWeg, double dStartzeitpunkt)
 {
 	delete p_pVerhalten;
 	this->p_pVerhalten = new FzgParken(pWeg, dStartzeitpunkt);
 	this->p_dAbschnittStrecke = 0;
+}
+
+void Fahrzeug::vZeichnen(Weg* pWeg) {
+
 }
 
 Fahrzeug& Fahrzeug::operator=(const Fahrzeug& fahrzeug) 

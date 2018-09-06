@@ -9,5 +9,6 @@ public:
 	~Fahrrad();
 	void vAusgabe();
 	double dGeschwindigkeit();
+	void vZeichnen(Weg * pWeg);
 };
 

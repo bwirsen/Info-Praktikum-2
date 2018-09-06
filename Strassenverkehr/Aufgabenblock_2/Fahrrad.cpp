@@ -27,3 +27,10 @@ double Fahrrad::dGeschwindigkeit() {
 		return 12;
 
 }
+
+void Fahrrad::vZeichnen(Weg* pWeg) {
+
+	double dRelPosition = this->getAbschnittStrecke() / pWeg->getLänge(); //berechnet relativ zur Länge zurückgelegte Strecke
+	bZeichneFahrrad(this->getName(), pWeg->getName(), dRelPosition, this->dGeschwindigkeit());
+
+}

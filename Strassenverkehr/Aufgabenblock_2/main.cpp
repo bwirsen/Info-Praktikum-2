@@ -9,7 +9,7 @@
 #include "Weg.h"
 #include "SimuClient.h"
 
-void wait();
+void vWait();
 void vAufgabe_1();
 void vAufgabe_1_deb();
 void vAufgabe_2();
@@ -49,7 +49,7 @@ int main(void) {
 		default:
 			return 0;
 		}
-		wait();
+		vWait();
 
 	}
 
@@ -219,24 +219,51 @@ void vAufgabe_4()
 
 void vAufgabe_5()
 {
-	Weg* weg1 = new Weg("weg1", 100, Innerorts);
-	PKW* pkw = new PKW("Lexus", 220, 2);
-	PKW* pkw2 = new PKW("Porsche", 250, 3);
-	Fahrrad* fr = new Fahrrad("KTM", 25);
+	Weg* weg1 = new Weg("B63", 500, Landstraße);
+	Weg* weg2 = new Weg("A1", 500);
 
-	weg1->vAnnahme(pkw, 3);
-	weg1->vAnnahme(pkw2);
-	weg1->vAnnahme(fr);
+	PKW* pkw1 = new PKW("Audi", 220 , 4);
+	PKW* pkw2 = new PKW("BMW", 240, 5);
+	Fahrrad* fr1 = new Fahrrad("KTM", 30);
+	PKW* pkw3 = new PKW("Porsche", 250, 6);
+	PKW* pkw4 = new PKW("Tesla", 220, 0);
+
+	weg1->vAnnahme(pkw1);
+	weg1->vAnnahme(pkw2, 2);
+	weg1->vAnnahme(fr1);
+	weg2->vAnnahme(pkw3);
+	weg2->vAnnahme(pkw4, 4);
+
+	bInitialisiereGrafik(900, 900); //Server starten
+	int iKoordinaten[] = { 800, 800, 200, 150};
+	bZeichneStrasse(weg1->getName(), weg2->getName(), 500, 2, iKoordinaten);
 
 	double dTakt = 0.25;
 	//double dTakt = 0.3;
 	Fahrzeug::vAusgabeKopf();
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 30; i++)
 	{
-		dGlobaleZeit += dTakt;
+		dGlobaleZeit += dTakt;		//Uhr laufen ...
+		vSetzeZeit(dGlobaleZeit);	//...und anzeigen lassen
+
 		weg1->vAbfertigung();
-		cout << *pkw << endl << *pkw2 << endl << *fr << endl;
+		weg2->vAbfertigung();
+
+		cout << *pkw1 << endl << *pkw2 << endl << *pkw3 << endl << *pkw4 << endl << *fr1 << endl;
+
+		pkw1->vZeichnen(weg1);
+		pkw2->vZeichnen(weg1);
+		pkw3->vZeichnen(weg2);
+		pkw4->vZeichnen(weg2);
+		fr1->vZeichnen(weg1);
+
+		vSleep(500);		//warten 500ms
+
 	}
+
+	vWait();
+	vBeendeGrafik();
+
 }
 
 
@@ -246,7 +273,7 @@ ostream& operator << (std::ostream& out, AktivesVO& aVO)
 	return aVO.ostreamAusgabe(out);
 }
 
-void wait() {
+void vWait() {
 
 	cin.ignore();
 	cin.ignore();

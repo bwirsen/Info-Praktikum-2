@@ -4,7 +4,6 @@
 #include <iomanip>
 
 #include "AktivesVO.h"
-//#include "FzgVerhalten.h"
 #include "FzgFahren.h"
 #include "FzgParken.h"
 
@@ -26,6 +25,7 @@ public:
 	virtual bool operator<(const Fahrzeug& fahrzeug);
 	virtual void vNeueStrecke(Weg* pWeg);
 	virtual void vNeueStrecke(Weg* pWeg, double dStartzeitpunkt);
+	virtual void vZeichnen(Weg * pWeg);
 	Fahrzeug& operator=(const Fahrzeug & fahrzeug);
 	double getMaxGeschwindigkeit();
 	double getAbschnittStrecke();

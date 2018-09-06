@@ -1,5 +1,6 @@
 #pragma once
 #include "Fahrzeug.h"
+
 class PKW :
 	public Fahrzeug
 {
@@ -11,6 +12,7 @@ public:
 	void vAbfertigung();
 	void vAusgabe();
 	double dGeschwindigkeit();
+	void vZeichnen(Weg * pWeg);
 	ostream& ostreamAusgabe(ostream& out);
 
 private:
