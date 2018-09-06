@@ -136,6 +136,8 @@
     <ClInclude Include="FzgFahren.h" />
     <ClInclude Include="FzgParken.h" />
     <ClInclude Include="FzgVerhalten.h" />
+    <ClInclude Include="LazyAktion.h" />
+    <ClInclude Include="LazyListe.h" />
     <ClInclude Include="Losfahren.h" />
     <ClInclude Include="PKW.h" />
     <ClInclude Include="SimuClient.h" />

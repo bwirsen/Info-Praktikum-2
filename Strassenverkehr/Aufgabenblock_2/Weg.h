@@ -17,6 +17,7 @@ public:
 	void vAbfertigung();
 	void vAnnahme(Fahrzeug * pFahrzeug);
 	void vAnnahme(Fahrzeug* pFahrzeug, double dStartzeitpunkt);
+	void vAbgabe(Fahrzeug * pFahrzeug);
 	double getLänge();
 	Begrenzung getBegrenzung();
 	

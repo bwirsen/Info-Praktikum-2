@@ -16,6 +16,7 @@ void vAufgabe_2();
 void vAufgabe_3();
 void vAufgabe_4();
 void vAufgabe_5();
+void vAufgabe_6();
 
 /*Überladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu können. Allgemeine Definition 
 in der main.cpp, da jede Überladung speziell in jeder Subklasse definiert werden muss */
@@ -43,6 +44,8 @@ int main(void) {
 		case '4' : vAufgabe_4();
 			break;
 		case '5' : vAufgabe_5();
+			break;
+		case '6' : vAufgabe_6();
 			break;
 		case 'q':
 			return 0;
@@ -264,6 +267,11 @@ void vAufgabe_5()
 	vWait();
 	vBeendeGrafik();
 
+}
+
+void vAufgabe_6()
+{
+	vAufgabe_5();
 }
 
 

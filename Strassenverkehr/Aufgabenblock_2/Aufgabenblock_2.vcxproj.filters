@@ -89,6 +89,12 @@
     <ClInclude Include="SimuClient.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="LazyAktion.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="LazyListe.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

@@ -17,6 +17,7 @@ void Losfahren::vBearbeiten()
 {
 	cout << endl <<"Ausnahme vom Typ: LOSFAHREN. Ausgeloest durch: " << p_pFahrzeug->getName() << " auf: " << p_pWeg->getName() << endl <<endl;
 	
+	this->p_pWeg->vAbgabe(this->p_pFahrzeug);
 	this->p_pWeg->vAnnahme(this->p_pFahrzeug);
 
 }

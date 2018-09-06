@@ -3,6 +3,7 @@
 
 
 
+
 Weg::Weg()
 {
 }
@@ -46,14 +47,23 @@ void Weg::vAbfertigung()
 
 void Weg::vAnnahme(Fahrzeug* pFahrzeug)
 {
-	this->p_pFahrzeuge.push_back(pFahrzeug);
+	this->p_pFahrzeuge.push_back(pFahrzeug);		//fahrende Fahrzeuge hinten
 	pFahrzeug->vNeueStrecke(this);
 }
 
 void Weg::vAnnahme(Fahrzeug* pFahrzeug, double dStartzeitpunkt)
 {
-	this->p_pFahrzeuge.push_back(pFahrzeug);
+	this->p_pFahrzeuge.push_front(pFahrzeug);		//parkende Fahrzeuge hinten
 	pFahrzeug->vNeueStrecke(this, dStartzeitpunkt);
+}
+
+void Weg::vAbgabe(Fahrzeug* pFahrzeug)
+{
+	list<Fahrzeug*>::iterator it = find(this->p_pFahrzeuge.begin(), this->p_pFahrzeuge.end(), pFahrzeug);
+	
+	if (it != this->p_pFahrzeuge.end()) //Falls it == end(), ist das Element nicht vorhanden
+		this->p_pFahrzeuge.erase(it);
+
 }
 
 double Weg::getLänge()
