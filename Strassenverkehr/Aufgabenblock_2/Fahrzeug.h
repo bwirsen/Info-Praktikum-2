@@ -30,6 +30,10 @@ public:
 	double getMaxGeschwindigkeit();
 	double getAbschnittStrecke();
 
+	void setTime(double dTime);
+
+	void setGesamtTime(double dTime);
+
 
 protected:
 	double p_dMaxGeschwindigkeit;

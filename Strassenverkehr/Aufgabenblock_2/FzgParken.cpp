@@ -1,4 +1,5 @@
 #include "FzgParken.h"
+#include "Fahrzeug.h"
 
 
 
@@ -19,10 +20,13 @@ FzgParken::~FzgParken()
 
 double FzgParken::dStrecke(Fahrzeug * pFahrzeug, double dZeit)
 {
-	if (dGlobaleZeit <= this->dStartzeitpunkt)
+	if (dGlobaleZeit <= this->dStartzeitpunkt) {
+		//pFahrzeug->setGesamtTime(0);
 		return 0.0;
+	}
 	else
 	{
+		pFahrzeug->setTime(dGlobaleZeit);
 		throw new Losfahren(pFahrzeug, this->p_pWeg); //fährt los, exception werfen
 	}
 		

@@ -33,7 +33,7 @@ ostream & Weg::ostreamAusgabe(ostream & out)
 
 void Weg::vAbfertigung()
 {
-	for (list<Fahrzeug*>::iterator it = this->p_pFahrzeuge.begin(); it != this->p_pFahrzeuge.end(); it++)
+	for (auto it = this->p_pFahrzeuge.begin(); it != this->p_pFahrzeuge.end(); it++)
 	{
 		try {
 			(*it)->vAbfertigung();
@@ -43,6 +43,7 @@ void Weg::vAbfertigung()
 			exception->vBearbeiten(); //Ausnahme abarbeiten
 		}
 	}
+	this->p_pFahrzeuge.vAktualisieren();
 }
 
 void Weg::vAnnahme(Fahrzeug* pFahrzeug)
@@ -75,3 +76,4 @@ Begrenzung Weg::getBegrenzung()
 {
 	return p_eLimit;
 }
+

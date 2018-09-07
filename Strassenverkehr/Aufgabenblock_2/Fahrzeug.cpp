@@ -49,14 +49,16 @@ void Fahrzeug::vAbfertigung()
 	// sonst abfertigen
 	else {
 		double dDeltaZeit = dGlobaleZeit - this->p_dZeit;  // Zeitabschnitt
-		
+
 		double dDeltaStrecke = this->p_pVerhalten->dStrecke(this, dDeltaZeit);
 
-		this->p_dGesamtStrecke += dDeltaStrecke;	
+		this->p_dGesamtStrecke += dDeltaStrecke;
 		this->p_dAbschnittStrecke += dDeltaStrecke;
 
 		this->p_dZeit = dGlobaleZeit;
-		this->p_dGesamtZeit += dDeltaZeit;									// +ZeitDiff	 
+
+		if (dDeltaStrecke != 0)								//Falls Wagen fährt, Fahrzeit aktualisieren
+			this->p_dGesamtZeit += dDeltaZeit;
 	}
 }
 
@@ -123,4 +125,14 @@ double Fahrzeug::getMaxGeschwindigkeit()
 double Fahrzeug::getAbschnittStrecke() {
 
 	return this->p_dAbschnittStrecke;
+}
+
+void Fahrzeug::setTime(double dTime)
+{
+	this->p_dZeit = dTime;
+}
+
+void Fahrzeug::setGesamtTime(double dTime)
+{
+	this->p_dGesamtZeit = dTime;
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "AktivesVO.h"
 #include <list>
+#include "LazyListe.h"
 class Fahrzeug;
 using namespace std;
 enum Begrenzung { Innerorts, Landstraﬂe, Autobahn }; //50 , 100 , unbegrenzt
@@ -24,7 +25,8 @@ public:
 
 private:
 	double p_dL‰nge; //L‰nge in kM
-	list<Fahrzeug*> p_pFahrzeuge;	//Liste mit Fahrzeugen
+	LazyListe<Fahrzeug*> p_pFahrzeuge; //LazyListe mit Fahrzeugen
+	//list<Fahrzeug*> p_pFahrzeuge;	//Liste mit Fahrzeugen
 	Begrenzung p_eLimit;			//v-Limit
 	
 };

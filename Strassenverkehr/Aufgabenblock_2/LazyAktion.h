@@ -30,15 +30,25 @@ class LazyPushFront : public LazyAktion<T>
                       : LazyAktion<T>(ptListe)
                       , p_tObjekt(anObjekt) {}
       virtual ~LazyPushFront() {}
-      void vAusfuehren() { p_ptListe->push_front(p_tObjekt); }
+      void vAusfuehren() {this->p_ptListe->push_front(p_tObjekt); }		//this musste noch dran, compiler hat sich beschwert.
    private:
       T	p_tObjekt;
 };
 
 
 // LazyPushBack
-
-...
+template <class T>
+class LazyPushBack : public LazyAktion<T>
+{
+public:
+	LazyPushBack(const T& anObjekt, list<T>* ptListe)
+				: LazyAktion<T>(ptListe)
+				, p_tObjekt(anObjekt) {}
+	virtual ~LazyPushBack() {}
+	void vAusfuehren() { this->p_ptListe->push_back(p_tObjekt); }
+private:
+	T	p_tObjekt;
+};
 
 
 // LazyErase
@@ -50,9 +60,9 @@ class LazyErase : public LazyAktion<T>
    typedef typename list<T>::const_iterator const_iterator;
 
    public:
-      LazyErase( ... ) : ... {}
+      LazyErase(const iterator itObjekt, list<T>* ptListe) : LazyAktion<T>(ptListe), p_itObjekt(itObjekt) {}
       virtual ~LazyErase() {}
-      void vAusfuehren() { ... }
+	  void vAusfuehren() { this->p_ptListe->erase(p_itObjekt); }	//ACHTUNG! kein Objekt übergeben, sondern den Iterator darauf.
    private:
       iterator	p_itObjekt;	// bei erase Iterator speichern
 };

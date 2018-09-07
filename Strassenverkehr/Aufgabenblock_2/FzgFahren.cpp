@@ -32,7 +32,7 @@ double FzgFahren::dStrecke(Fahrzeug* pFahrzeug, double dZeit)
 	}
 
 	//Ausnahme werfen, da Strecke zu Ende
-
+	//pFahrzeug->setTime(dGlobaleZeit);
 	throw new Streckenende(pFahrzeug, this->p_pWeg);  //pointer auf Fahrausnahme
 
 	/*
