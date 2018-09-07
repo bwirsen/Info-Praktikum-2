@@ -129,6 +129,9 @@
     <ClCompile Include="Weg.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="AktivesVO.h" />
     <ClInclude Include="FahrAusnahme.h" />
     <ClInclude Include="Fahrrad.h" />
@@ -143,9 +146,6 @@
     <ClInclude Include="SimuClient.h" />
     <ClInclude Include="Streckenende.h" />
     <ClInclude Include="Weg.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="SimuClient.lib" />

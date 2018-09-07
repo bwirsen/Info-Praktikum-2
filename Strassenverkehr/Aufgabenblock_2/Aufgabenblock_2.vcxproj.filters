@@ -53,40 +53,28 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AktivesVO.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="FahrAusnahme.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
     <ClInclude Include="Fahrrad.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Fahrzeug.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="PKW.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="AktivesVO.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Weg.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="FzgVerhalten.h">
+    <ClInclude Include="FzgFahren.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="FzgParken.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="FzgFahren.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="FahrAusnahme.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Losfahren.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="Streckenende.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
-    <ClInclude Include="SimuClient.h">
+    <ClInclude Include="FzgVerhalten.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="LazyAktion.h">
@@ -95,9 +83,21 @@
     <ClInclude Include="LazyListe.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClInclude Include="Losfahren.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="PKW.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="SimuClient.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Streckenende.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Weg.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="SimuClient.lib">
