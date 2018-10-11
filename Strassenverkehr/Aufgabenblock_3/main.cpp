@@ -20,6 +20,7 @@ void vAufgabe_4();
 void vAufgabe_5();
 void vAufgabe_6();
 void vAufgabe_6a();
+void vAufgabe_7();
 
 /*‹berladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu kˆnnen. Allgemeine Definition 
 in der main.cpp, da jede ‹berladung speziell in jeder Subklasse definiert werden muss */
@@ -27,13 +28,18 @@ ostream& operator << (ostream& out, AktivesVO& aVO);
 
 extern double dGlobaleZeit = 0.0;
 
+inline bool bEqual(double x, double y)
+{
+	return (fabs(x - y) < 1e-6);
+}
+
 
 int main(void) {
 
 	char cAuswahl;
 	while (true) {
 
-		cout << "Aufgabe 1, 2, 3, 4, 5, 6, 6a? Beenden (q). Warnung: Aufgabenblock 3" << endl;
+		cout << "Aufgabe 1, 2, 3, 4, 5, 6, 6a (a), 7? Beenden (q). Warnung: Aufgabenblock 3" << endl;
 		cin >> cAuswahl;
 
 		switch (cAuswahl) {
@@ -50,7 +56,10 @@ int main(void) {
 			break;
 		case '6' : vAufgabe_6();
 			break;
-		case 'a': vAufgabe_6a();
+		case 'a' : vAufgabe_6a();
+			break;
+		case '7' : vAufgabe_7();
+			break;
 		case 'q':
 			return 0;
 		default:
@@ -360,6 +369,53 @@ void vAufgabe_6a()
 
 	vWait();
 }
+
+void vAufgabe_7()
+{
+	Weg weg1("B63", 120, Landstraﬂe);
+	Weg weg2("B63z", 120, Landstraﬂe);
+
+	PKW pkw1("Audi", 220, 4);
+	Fahrrad fr2("Kawasaki", 40);
+	Fahrrad fr1("KTM", 50);
+
+	weg1.vAnnahme(&pkw1, 3);
+	weg1.vAnnahme(&fr1, 1.2);
+
+	bInitialisiereGrafik(900, 900); //Server starten
+	int iKoordinaten[] = { 800, 800, 200, 150 };
+	bZeichneStrasse(weg1.getName(), weg2.getName(), 500, 2, iKoordinaten);
+
+	Fahrzeug::vAusgabeKopf();
+	for (dGlobaleZeit = 0; dGlobaleZeit <= 10; dGlobaleZeit += 0.1)
+	{			
+		
+
+		if (bEqual(dGlobaleZeit, 5)) 
+		{
+			weg1.vAnnahme(&fr2, 5.5);
+		}
+
+		weg1.vAbfertigung();
+
+		vSetzeZeit(dGlobaleZeit);
+
+		pkw1.vZeichnen(&weg1);
+		fr1.vZeichnen(&weg1);
+		fr2.vZeichnen(&weg1);
+
+
+		cout << pkw1 << endl << fr1 << endl << fr2 << endl << weg1 << endl << endl;
+
+		vSleep(50);		//warten 50ms
+
+	}
+	vWait();
+
+	vBeendeGrafik();
+}
+
+
 
 
 ostream& operator << (std::ostream& out, AktivesVO& aVO)

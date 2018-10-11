@@ -8,7 +8,7 @@ Weg::Weg()
 {
 }
 
-Weg::Weg(string name, double länge, Begrenzung limit) : AktivesVO(name), p_dLänge(länge), p_eLimit(limit)
+Weg::Weg(string name, double länge, Begrenzung limit, bool uVerbot) : AktivesVO(name), p_dLänge(länge), p_eLimit(limit) , p_bUeberholverbot(uVerbot)
 {
 }
 
@@ -33,6 +33,7 @@ ostream & Weg::ostreamAusgabe(ostream & out)
 
 void Weg::vAbfertigung()
 {
+	this->p_dSchranke = this->p_dLänge;
 	for (auto it = this->p_pFahrzeuge.begin(); it != this->p_pFahrzeuge.end(); it++)
 	{
 		try {
@@ -44,6 +45,7 @@ void Weg::vAbfertigung()
 		}
 	}
 	this->p_pFahrzeuge.vAktualisieren();
+	
 }
 
 void Weg::vAnnahme(Fahrzeug* pFahrzeug)
@@ -54,7 +56,7 @@ void Weg::vAnnahme(Fahrzeug* pFahrzeug)
 
 void Weg::vAnnahme(Fahrzeug* pFahrzeug, double dStartzeitpunkt)
 {
-	this->p_pFahrzeuge.push_front(pFahrzeug);		//parkende Fahrzeuge hinten
+	this->p_pFahrzeuge.push_front(pFahrzeug);		//parkende Fahrzeuge vorne
 	pFahrzeug->vNeueStrecke(this, dStartzeitpunkt);
 }
 
@@ -70,6 +72,21 @@ void Weg::vAbgabe(Fahrzeug* pFahrzeug)
 double Weg::getLänge()
 {
 	return this->p_dLänge;
+}
+
+double Weg::getSchranke()
+{
+	return p_dSchranke;
+}
+
+bool Weg::getUeberholverbot()
+{
+	return p_bUeberholverbot;
+}
+
+void Weg::setSchranke(double schranke)
+{
+	p_dSchranke = schranke;
 }
 
 Begrenzung Weg::getBegrenzung()

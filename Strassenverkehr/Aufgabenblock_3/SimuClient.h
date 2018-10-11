@@ -16,7 +16,7 @@ using namespace std;
 #endif
 
 // NUTZBARE FUNKTIONEN (offizielle Schnittstelle)
-SIMUCLIENT_API bool bInitialisiereGrafik(int sizeX, int sizeY, char* address = 0 );
+SIMUCLIENT_API bool bInitialisiereGrafik(int sizeX, int sizeY, const char* address = "127.0.0.1");
 SIMUCLIENT_API bool bZeichneKreuzung(int posX, int posY);
 SIMUCLIENT_API bool bZeichneStrasse(const string& way_to_name, const string& way_back_name, int length, int numPoints, int* points_xy);
 SIMUCLIENT_API bool bZeichnePKW(const string& carname, const string& streetname, double rel_position, double speed, double tank);

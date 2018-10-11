@@ -54,7 +54,7 @@ void Fahrzeug::vAbfertigung()
 
 		this->p_dGesamtStrecke += dDeltaStrecke;
 		this->p_dAbschnittStrecke += dDeltaStrecke;
-
+		
 		this->p_dZeit = dGlobaleZeit;
 
 		if (dDeltaStrecke != 0)								//Falls Wagen fährt, Fahrzeit aktualisieren

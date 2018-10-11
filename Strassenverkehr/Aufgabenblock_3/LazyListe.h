@@ -83,7 +83,7 @@ class LazyListe
 	         {
 	         // Aktion ausführen
 				(*itL)->vAusfuehren();				//wichtig doppelt dereferenzieren, da LazyAktionen dynamisch erstellt werden
-             // Action-Element löschen
+             // Aktion-Element löschen
 				delete *itL;						//Pointer in der Liste löschen, delte auch möglich weil dynamisch 
 	         }
 	         // Liste der Aktionen leeren
