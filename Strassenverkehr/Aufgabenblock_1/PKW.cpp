@@ -4,7 +4,7 @@
 
 PKW::PKW(string name, double vMax, double vb, double vTank) : Fahrzeug(name, vMax),
 p_dVerbrauch(vb), p_dTankvolumen(vTank)
-{
+{	//init. mit halbem Tankvolumen
 	p_dTankinhalt = p_dTankvolumen / 2;
 }
 
@@ -30,8 +30,9 @@ double PKW::dTanken(double dMenge)
 
 void PKW::vAbfertigung()
 {	
+	//tank leer?
 	if (this->p_dTankinhalt != 0) {
-		// Strecke vor Abfertigung zwischenspeichern.
+		// Strecke vor Abfertigung zwischenspeichern. VA == vor Abfertigung
 		double dGesamtStreckeVA = this->p_dGesamtStrecke;
 
 		Fahrzeug::vAbfertigung();

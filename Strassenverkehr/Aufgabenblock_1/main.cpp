@@ -24,7 +24,7 @@ int main(void) {
 	char cAuswahl;
 	while (true) {
 
-		cout << "Aufgabe 1, 2, oder 3? Beenden (q)" << endl;
+		cout << "Aufgabe 1, 2, 3 oder 1deb (4)? Beenden (q)" << endl;
 		cin >> cAuswahl;
 
 		switch (cAuswahl) {
@@ -34,6 +34,8 @@ int main(void) {
 		case '2': vAufgabe_2();
 			break;
 		case '3': vAufgabe_3();
+			break;
+		case '4': vAufgabe_1_deb();
 			break;
 		case 'q':
 			return 0;
@@ -54,12 +56,11 @@ void vAufgabe_1()
 	Fahrzeug* f2 = new Fahrzeug("Mercedes", 250);
 	Fahrzeug* f3 = new Fahrzeug("Porsche", 300);
 
-	double dTakt = 1.13;
 	f1->vAusgabeKopf();
 	cout << endl;
-	for (int i = 0; i < 10; i++) {
+	for (dGlobaleZeit = 0; dGlobaleZeit < 10; dGlobaleZeit++) {
 		
-		dGlobaleZeit = dGlobaleZeit + dTakt;
+		
 
 		f1->vAbfertigung();
 		f1->vAusgabe();
@@ -82,15 +83,17 @@ void vAufgabe_1_deb() {
 	Fahrzeug* f4 = new Fahrzeug("Opel", 187);
 
 	Fahrzeug* fArray[] = { f1, f2, f3, f4 };
-
+	Fahrzeug::vAusgabeKopf();
 	for (int i = 0; i < 4; i++) {
 		fArray[i]->vAusgabe();
+		cout << endl;
 	}
 
 	fArray[2] = 0; //Nullpointer oops
 
 	for (int i = 0; i < 4; i++) {
 		fArray[i]->vAusgabe();
+		cout << endl;
 	}
 
 

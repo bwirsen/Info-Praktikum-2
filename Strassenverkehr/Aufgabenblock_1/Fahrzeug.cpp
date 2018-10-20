@@ -81,7 +81,7 @@ double Fahrzeug::dGeschwindigkeit() {
 	return 0;
 }
 
-//Überladung von out für Fahrzeug
+//Überladung vom Streamoperator für die Fahrzeuge
 ostream& Fahrzeug::ostreamAusgabe(ostream& out)
 {
 	out << setprecision(2) << fixed << setw(5) << setiosflags(ios::left) << this->p_iID << setw(12) << this->p_sName
