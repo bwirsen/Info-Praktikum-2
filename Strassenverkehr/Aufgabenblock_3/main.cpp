@@ -393,8 +393,6 @@ void vAufgabe_7()
 	Fahrzeug::vAusgabeKopf();
 	for (dGlobaleZeit = 0; dGlobaleZeit <= 10; dGlobaleZeit += 0.1)
 	{			
-		
-
 		if (bEqual(dGlobaleZeit, 5)) 
 		{
 			weg1.vAnnahme(&fr2, 5.5);
@@ -421,6 +419,7 @@ void vAufgabe_7()
 
 void vAufgabe_8()
 {
+	
 	Kreuzung kr1("Kr1");
 	Kreuzung kr2("Kr2", 1000);
 	Kreuzung kr3("Kr3");
@@ -433,15 +432,10 @@ void vAufgabe_8()
 	kr3.vVerbinde("W34", "W43", 85, &kr4, false);
 	kr4.vVerbinde("W44a", "W44b", 130, &kr4, false, Landstraße);
 
-	cout << kr1 << endl;
-	cout << kr2 << endl;
-	
+	//TODO: Fahrzeuge erstellen, von kr1 annehmen lassen, Routine wie gehabt erstellen, alles ausgeben
 
-	
-
-	 
 }
-
+	
 
 
 

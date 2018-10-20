@@ -30,8 +30,10 @@ public:
 	void setSchranke(double dSchranke);
 	Begrenzung getBegrenzung();
 	void setRueckweg(Weg* pWeg);
+	Weg* getRueckweg();
 	void setKreuzung(Kreuzung* pKreuzung);
 	Kreuzung* getKreuzung();
+	void vZeichnen();
 	
 
 private:

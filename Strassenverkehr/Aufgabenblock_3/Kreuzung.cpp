@@ -80,3 +80,40 @@ void Kreuzung::vAbfertigung()
 	}
 }
 
+Weg* Kreuzung::pZufaelligerWeg(Weg* pWegHin)
+{
+	//Falls es mehrere Wege gibt, wähle zufälligen
+	if (this->p_pWege.size() != 1)
+	{
+		//Endlosschleife bis ein möglicher Weg gefunden wird. Vgl. Zeile 101
+		while (true)
+		{	
+			//Zufallszahl zwischen 0 und size() der Liste
+			int iRand = rand() % p_pWege.size();
+			//setze Iterator auf Anfang der Liste
+			auto it = p_pWege.begin();
+			//inkr. bis zum gewünschten Index
+			for (int i = 0; i < iRand; i++)
+			{
+				it++;
+			}
+			//teste auf unterschiedlichen Weg und gebe zurück, falls nicht, noch mal von vorn
+			if ((*it)->getName() != pWegHin->getRueckweg()->getName())
+				return *it;
+		}
+	}
+
+	//sonst wähle Rückweg
+	return pWegHin->getRueckweg();
+}
+
+double Kreuzung::getTankstellenInhalt() 
+{
+	return this->p_dTankstelle;
+}
+
+void Kreuzung::vZeichnen() 
+{
+	//TODO: Für alle Wege in der Liste vZeichnen aufrufen
+}
+

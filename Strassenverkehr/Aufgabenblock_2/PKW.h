@@ -12,7 +12,7 @@ public:
 	void vAbfertigung();
 	void vAusgabe();
 	double dGeschwindigkeit();
-	void vZeichnen(Weg * pWeg);
+	void vZeichnen(Weg* pWeg);
 	ostream& ostreamAusgabe(ostream& out);
 
 private:

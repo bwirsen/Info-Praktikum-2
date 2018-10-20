@@ -99,6 +99,11 @@ void Weg::setRueckweg(Weg* pWeg)
 	this->p_pRueckweg = pWeg;
 }
 
+Weg* Weg::getRueckweg()
+{
+	return this->p_pRueckweg;
+}
+
 void Weg::setKreuzung(Kreuzung * pKreuzung)
 {
 	this->p_pKreuzung = pKreuzung;
@@ -107,5 +112,10 @@ void Weg::setKreuzung(Kreuzung * pKreuzung)
 Kreuzung * Weg::getKreuzung()
 {
 	return this->p_pKreuzung;
+}
+
+void Weg::vZeichnen()
+{
+	//TODO: Für jedes Fahrzeug in der Liste vZeichnen() aufrufen
 }
 
