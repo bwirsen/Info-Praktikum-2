@@ -84,13 +84,28 @@ bool Weg::getUeberholverbot()
 	return p_bUeberholverbot;
 }
 
-void Weg::setSchranke(double schranke)
+void Weg::setSchranke(double dSchranke)
 {
-	p_dSchranke = schranke;
+	p_dSchranke = dSchranke;
 }
 
 Begrenzung Weg::getBegrenzung()
 {
 	return p_eLimit;
+}
+
+void Weg::setRueckweg(Weg* pWeg)
+{
+	this->p_pRueckweg = pWeg;
+}
+
+void Weg::setKreuzung(Kreuzung * pKreuzung)
+{
+	this->p_pKreuzung = pKreuzung;
+}
+
+Kreuzung * Weg::getKreuzung()
+{
+	return this->p_pKreuzung;
 }
 

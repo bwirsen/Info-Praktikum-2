@@ -24,7 +24,7 @@ FzgParken::~FzgParken()
 double FzgParken::dStrecke(Fahrzeug * pFahrzeug, double dZeit)
 {
 
-	if (bEqual(dGlobaleZeit, this->dStartzeitpunkt)) //falls Starzeitpunkt erreicht
+	if (bEqual(dGlobaleZeit, this->dStartzeitpunkt) || dGlobaleZeit > this->dStartzeitpunkt) //falls Starzeitpunkt erreicht
 	{
 		pFahrzeug->setTime(dGlobaleZeit);
 		throw new Losfahren(pFahrzeug, this->p_pWeg); //fährt los, exception werfen als pointer

@@ -42,7 +42,6 @@ double FzgFahren::dStrecke(Fahrzeug* pFahrzeug, double dZeit)
 		double dSchranke = this->p_pWeg->getSchranke();
 		if (pFahrzeug->getAbschnittStrecke() != this->p_pWeg->getLänge())					//falls noch nicht am Ende
 		{
-
 			if (dStrecke >= dRestStrecke && dAbschnittNeu < dSchranke)		//falls Rest kleiner als zu fahrende Strecke...
 			{
 				return dRestStrecke;										//...fahre nur bis zum Ende

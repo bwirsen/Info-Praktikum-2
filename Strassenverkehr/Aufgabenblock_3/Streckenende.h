@@ -1,5 +1,7 @@
 #pragma once
 #include "FahrAusnahme.h"
+#include "Kreuzung.h"
+
 class Streckenende :
 	public FahrAusnahme
 {

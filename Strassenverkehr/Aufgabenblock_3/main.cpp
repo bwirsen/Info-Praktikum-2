@@ -10,6 +10,7 @@
 #include "SimuClient.h"
 #include "LazyAktion.h"
 #include "LazyListe.h"
+#include "Kreuzung.h"
 
 void vWait();
 void vAufgabe_1();
@@ -21,6 +22,7 @@ void vAufgabe_5();
 void vAufgabe_6();
 void vAufgabe_6a();
 void vAufgabe_7();
+void vAufgabe_8();
 
 /*‹berladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu kˆnnen. Allgemeine Definition 
 in der main.cpp, da jede ‹berladung speziell in jeder Subklasse definiert werden muss */
@@ -39,7 +41,7 @@ int main(void) {
 	char cAuswahl;
 	while (true) {
 
-		cout << "Aufgabe 1, 2, 3, 4, 5, 6, 6a (a), 7? Beenden (q). Warnung: Aufgabenblock 3" << endl;
+		cout << "Aufgabe 1, 2, 3, 4, 5, 6, 6a (a), 7, 8? Beenden (q). Warnung: Aufgabenblock 3" << endl;
 		cin >> cAuswahl;
 
 		switch (cAuswahl) {
@@ -59,6 +61,8 @@ int main(void) {
 		case 'a' : vAufgabe_6a();
 			break;
 		case '7' : vAufgabe_7();
+			break;
+		case '8': vAufgabe_8();
 			break;
 		case 'q':
 			return 0;
@@ -413,6 +417,29 @@ void vAufgabe_7()
 	vWait();
 
 	vBeendeGrafik();
+}
+
+void vAufgabe_8()
+{
+	Kreuzung kr1("Kr1");
+	Kreuzung kr2("Kr2", 1000);
+	Kreuzung kr3("Kr3");
+	Kreuzung kr4("Kr4");
+
+	kr1.vVerbinde("W12", "W21", 40, &kr2, true, Innerorts);
+	kr2.vVerbinde("W23a", "W32a", 115, &kr3, false);
+	kr2.vVerbinde("W23b", "W32b", 40, &kr3, true, Innerorts);
+	kr2.vVerbinde("W24", "W42", 55, &kr4, true, Innerorts);
+	kr3.vVerbinde("W34", "W43", 85, &kr4, false);
+	kr4.vVerbinde("W44a", "W44b", 130, &kr4, false, Landstraﬂe);
+
+	cout << kr1 << endl;
+	cout << kr2 << endl;
+	
+
+	
+
+	 
 }
 
 
