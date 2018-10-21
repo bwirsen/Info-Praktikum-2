@@ -467,7 +467,7 @@ void vAufgabe_8()
 	bZeichneStrasse("W44a", "W44b", 130, 7, iKoord6);	// 6
 
 	Fahrzeug::vAusgabeKopf();
-	for (dGlobaleZeit = 0; dGlobaleZeit <= 20; dGlobaleZeit += 0.1)
+	for (dGlobaleZeit = 0; dGlobaleZeit <= 5; dGlobaleZeit += 0.1)
 	{
 		vSetzeZeit(dGlobaleZeit);
 
@@ -481,10 +481,11 @@ void vAufgabe_8()
 		kr3.vZeichnen();
 		kr4.vZeichnen();
 
+		cout << "**********************************************************************************************************************************************************" << endl;
 		cout << pkw1 << endl << pkw2 << endl << pkw3 << endl << fr1 << endl << fr2 << endl << kr1 << endl << kr2 << endl << kr3 << endl << kr4 << endl << endl ;
+		cout << "**********************************************************************************************************************************************************" << endl;
 
 		vSleep(100);		
-
 	}
 	vWait();
 
