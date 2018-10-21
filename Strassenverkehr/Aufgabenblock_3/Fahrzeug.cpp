@@ -1,5 +1,10 @@
 #include "Fahrzeug.h"
 
+inline bool bEqual(double x, double y)
+{
+	return (fabs(x - y) < 1e-6);
+}
+
 void Fahrzeug::vInitialisierung() {
 	p_dGesamtStrecke = 0;
 	p_dGesamtZeit = 0;
@@ -42,24 +47,22 @@ void Fahrzeug::vAusgabeKopf() {
 
 void Fahrzeug::vAbfertigung()
 {
-	//Wenn schon abgefertigt, nicht machen
-	if (dGlobaleZeit == this->p_dZeit) {
+	//Wenn schon abgefertigt, nichts machen, sonst abfertigen
+	if (!bEqual(dGlobaleZeit, this->p_dZeit)) {
 
-	}
-	// sonst abfertigen
-	else {
 		double dDeltaZeit = dGlobaleZeit - this->p_dZeit;  // Zeitabschnitt
 
 		double dDeltaStrecke = this->p_pVerhalten->dStrecke(this, dDeltaZeit);
 
 		this->p_dGesamtStrecke += dDeltaStrecke;
 		this->p_dAbschnittStrecke += dDeltaStrecke;
-		
+
 		this->p_dZeit = dGlobaleZeit;
 
-		if (dDeltaStrecke != 0)								//Falls Wagen fährt, Fahrzeit aktualisieren
+		if (!bEqual(dDeltaStrecke, 0))								//Falls Wagen fährt, Fahrzeit aktualisieren
 			this->p_dGesamtZeit += dDeltaZeit;
 	}
+	
 }
 
 double Fahrzeug::dTanken(double dMenge)

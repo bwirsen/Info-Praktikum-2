@@ -36,17 +36,17 @@ void Kreuzung::vVerbinde(string sWegHin, string sWegRueck, double dWegLaenge, Kr
 	Weg* WegHin = new Weg(sWegHin, dWegLaenge, eLimit, bUeberholverbot);
 	Weg* WegRueck = new Weg(sWegRueck, dWegLaenge, eLimit, bUeberholverbot);
 
-	//Wege bekanntmachen
+	//TODO: Wege bekanntmachen
 	WegHin->setRueckweg(WegRueck);
 	WegRueck->setRueckweg(WegHin);
 
 	//Wege und Kreuzungen bekanntmachen
-	WegHin->setKreuzung(this);
-	WegRueck->setKreuzung(pKreuzung);
+	WegHin->setKreuzung(pKreuzung);
+	WegRueck->setKreuzung(this);
 
 	//Wege pushen
-	this->p_pWege.push_back(WegRueck);
-	pKreuzung->p_pWege.push_back(WegHin);
+	this->p_pWege.push_back(WegHin);
+	pKreuzung->p_pWege.push_back(WegRueck);
 		
 }
 
@@ -105,6 +105,7 @@ Weg* Kreuzung::pZufaelligerWeg(Weg* pWegHin)
 
 	//sonst wähle Rückweg
 	return pWegHin->getRueckweg();
+
 }
 
 double Kreuzung::getTankstellenInhalt() 
@@ -114,6 +115,9 @@ double Kreuzung::getTankstellenInhalt()
 
 void Kreuzung::vZeichnen() 
 {
-	//TODO: Für alle Wege in der Liste vZeichnen aufrufen
+	for (auto it = this->p_pWege.begin(); it != this->p_pWege.end(); it++)
+	{
+		(*it)->vZeichnen();
+	}
 }
 

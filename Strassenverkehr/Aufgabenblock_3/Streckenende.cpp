@@ -12,7 +12,7 @@ Streckenende::~Streckenende()
 
 void Streckenende::vBearbeiten()
 {
-	cout << endl << "Ausnahme vom Typ: STRECKENEDE. Ausgeloest durch: " << p_pFahrzeug->getName() << " auf: " << p_pWeg->getName() << endl << endl;
+	// cout << endl << "Ausnahme vom Typ: STRECKENEDE. Ausgeloest durch: " << p_pFahrzeug->getName() << " auf: " << p_pWeg->getName() << endl << endl;
 
 	Kreuzung* pKreuzung = this->p_pWeg->getKreuzung();
 	Weg* pWegNeu = pKreuzung->pZufaelligerWeg(this->p_pWeg);
@@ -28,7 +28,6 @@ void Streckenende::vBearbeiten()
 	cout << "ZEIT		: " << dGlobaleZeit << endl
 		<< "KREUZUNG	: " << pKreuzung->getName() << " " << pKreuzung->getTankstellenInhalt() << endl
 		<< "WECHSEL		: " << this->p_pWeg->getName() << " -> " << pWegNeu->getName() << endl
-		<< "FAHRZEUG	: " << this->p_pFahrzeug << endl;
+		<< "FAHRZEUG	: " << this->p_pFahrzeug->getName() << endl;
 
-		
 }

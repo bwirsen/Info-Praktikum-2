@@ -116,6 +116,9 @@ Kreuzung * Weg::getKreuzung()
 
 void Weg::vZeichnen()
 {
-	//TODO: Für jedes Fahrzeug in der Liste vZeichnen() aufrufen
+	for (auto it = this->p_pFahrzeuge.begin(); it != this->p_pFahrzeuge.end(); it++)
+	{
+		(*it)->vZeichnen(this);
+	}
 }
 

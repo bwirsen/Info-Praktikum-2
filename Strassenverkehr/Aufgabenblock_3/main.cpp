@@ -425,20 +425,72 @@ void vAufgabe_8()
 	Kreuzung kr3("Kr3");
 	Kreuzung kr4("Kr4");
 
-	kr1.vVerbinde("W12", "W21", 40, &kr2, true, Innerorts);
-	kr2.vVerbinde("W23a", "W32a", 115, &kr3, false);
-	kr2.vVerbinde("W23b", "W32b", 40, &kr3, true, Innerorts);
-	kr2.vVerbinde("W24", "W42", 55, &kr4, true, Innerorts);
-	kr3.vVerbinde("W34", "W43", 85, &kr4, false);
-	kr4.vVerbinde("W44a", "W44b", 130, &kr4, false, Landstraﬂe);
+	PKW pkw1("Audi", 110, 6);
+	PKW pkw2("BMW", 225, 6.5);
+	PKW pkw3("Tesla", 250, 0);
+	Fahrrad fr1("KTM", 35);
+	Fahrrad fr2("BMC", 50);
+	
+	bInitialisiereGrafik(1200, 720); //starte Server
 
-	//TODO: Fahrzeuge erstellen, von kr1 annehmen lassen, Routine wie gehabt erstellen, alles ausgeben
+	kr1.vVerbinde("W12", "W21", 40, &kr2, true, Innerorts);		    // 1
+	kr2.vVerbinde("W23a", "W32a", 115, &kr3, false);				// 2
+	kr2.vVerbinde("W23b", "W32b", 40, &kr3, true, Innerorts);		// 3
+	kr2.vVerbinde("W24", "W42", 55, &kr4, true, Innerorts);			// 4
+	kr3.vVerbinde("W34", "W43", 85, &kr4, false);					// 5
+	kr4.vVerbinde("W44a", "W44b", 130, &kr4, false, Landstraﬂe);	// 6
 
+	kr1.vAnnahme(&pkw1, 0);
+	
+	kr1.vAnnahme(&pkw2, 1.7);
+	kr1.vAnnahme(&pkw3, 2.2);
+	kr1.vAnnahme(&fr1, 3);
+	kr1.vAnnahme(&fr2, 0.3);
+	
+	int iKoord1[] = { 680, 40, 680, 300 };
+	int iKoord2[] = { 680, 300, 850, 300, 970, 390, 970, 500, 850, 570, 680, 570 };
+	int iKoord3[] = { 680, 300, 680, 570 };
+	int iKoord4[] = { 680, 300, 320, 300 };
+	int iKoord5[] = { 680, 570, 500, 570, 350, 510, 320, 420, 320, 300 };
+	int iKoord6[] = { 320, 300, 320, 150, 200, 60, 80, 90, 70, 250, 170, 300, 320, 300 };
+
+	bZeichneKreuzung(680, 40);  // 1
+	bZeichneKreuzung(680, 300); // 2
+	bZeichneKreuzung(680, 570); // 3
+	bZeichneKreuzung(320, 300); // 4
+
+	bZeichneStrasse("W12", "W21", 40, 2, iKoord1);		// 1
+	bZeichneStrasse("W23a", "W32a", 115, 6, iKoord2);	// 2
+	bZeichneStrasse("W23b", "W32b", 40, 2, iKoord3);	// 3
+	bZeichneStrasse("W24", "W42", 55, 2, iKoord4);		// 4
+	bZeichneStrasse("W34", "W43", 85, 5, iKoord5);		// 5
+	bZeichneStrasse("W44a", "W44b", 130, 7, iKoord6);	// 6
+
+	Fahrzeug::vAusgabeKopf();
+	for (dGlobaleZeit = 0; dGlobaleZeit <= 20; dGlobaleZeit += 0.1)
+	{
+		vSetzeZeit(dGlobaleZeit);
+
+		kr1.vAbfertigung();
+		kr2.vAbfertigung();
+		kr3.vAbfertigung();
+		kr4.vAbfertigung();
+
+		kr1.vZeichnen();
+		kr2.vZeichnen();
+		kr3.vZeichnen();
+		kr4.vZeichnen();
+
+		cout << pkw1 << endl << pkw2 << endl << pkw3 << endl << fr1 << endl << fr2 << endl << kr1 << endl << kr2 << endl << kr3 << endl << kr4 << endl << endl ;
+
+		vSleep(100);		
+
+	}
+	vWait();
+
+	vBeendeGrafik();
 }
 	
-
-
-
 ostream& operator << (std::ostream& out, AktivesVO& aVO)
 {
 	//¸bergabe von out an die Member¸berladungen, damit out gef¸llt wird
