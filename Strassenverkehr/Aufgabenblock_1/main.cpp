@@ -16,6 +16,11 @@ void vAufgabe_3();
 //in der main.cpp, da jede Überladung speziell in jeder Subklasse definiert werden muss
 ostream& operator << (ostream& out, Fahrzeug& fahrzeug);
 
+inline bool bEqual(double x, double y)
+{
+	return (fabs(x - y) < 1e-6);
+}
+
 extern double dGlobaleZeit = 0.0;
 
 
@@ -24,7 +29,7 @@ int main(void) {
 	char cAuswahl;
 	while (true) {
 
-		cout << "Aufgabe 1, 2, 3 oder 1deb (4)? Beenden (q)" << endl;
+		cout << "Aufgabe 1, 2, 3 oder 1deb (4)? Beenden (q) WARNUNG: Aufgabenlock 1" << endl;
 		cin >> cAuswahl;
 
 		switch (cAuswahl) {
@@ -58,7 +63,7 @@ void vAufgabe_1()
 
 	f1->vAusgabeKopf();
 	cout << endl;
-	for (dGlobaleZeit = 0; dGlobaleZeit < 10; dGlobaleZeit++) {
+	for (dGlobaleZeit = 0; dGlobaleZeit <= 10; dGlobaleZeit++) {
 		
 		
 
@@ -151,7 +156,7 @@ void vAufgabe_2()
 			(*it)->vAbfertigung();
 			
 			//Auftanken nach 3 Stunden
-			if (dGlobaleZeit == 3) {
+			if (bEqual(dGlobaleZeit, 3)) {
 				(*it)->dTanken();
 			}
 				

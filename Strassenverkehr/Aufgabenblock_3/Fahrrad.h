@@ -5,10 +5,14 @@
 class Fahrrad : public Fahrzeug
 {
 public:
+	//Konstruktor und Destruktoren
 	Fahrrad(string name, double vMax);
 	~Fahrrad();
+	//Ausgabefunktion
 	void vAusgabe();
+	//Funktion zur Rückgabe der Geschwindigkeit
 	double dGeschwindigkeit();
-	void vZeichnen(Weg * pWeg);
+	//Funktion zum Zeichnen des Fahrrads im Server, übergibt relative Position
+	void vZeichnen(Weg* pWeg);
 };
 

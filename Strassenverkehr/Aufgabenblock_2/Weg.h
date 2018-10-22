@@ -11,14 +11,21 @@ class Weg :
 	public AktivesVO
 {
 public:
+	//Konstruktor und Destruktor
 	Weg();
 	Weg(string name, double länge, Begrenzung limit = Autobahn);
 	virtual ~Weg();
+	//Überladung des Ausgabe-Streamoperators
 	ostream& ostreamAusgabe(ostream& out);
+	//Funktion zum Abfertigen aller Fahrzeuge auf dem Weg
 	void vAbfertigung();
-	void vAnnahme(Fahrzeug * pFahrzeug);
+	//Annahme von fahrenden Fahrzeugen
+	void vAnnahme(Fahrzeug* pFahrzeug);
+	//Annahme von parkenden Fahrzeugen
 	void vAnnahme(Fahrzeug* pFahrzeug, double dStartzeitpunkt);
-	void vAbgabe(Fahrzeug * pFahrzeug);
+	//Funktion zur Abgabe von Fahrzeugen
+	void vAbgabe(Fahrzeug* pFahrzeug);
+	//getter und setter
 	double getLänge();
 	Begrenzung getBegrenzung();
 	
