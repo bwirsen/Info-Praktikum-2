@@ -21,7 +21,6 @@ FzgParken::~FzgParken()
 double FzgParken::dStrecke(Fahrzeug * pFahrzeug, double dZeit)
 {
 	if (dGlobaleZeit <= this->dStartzeitpunkt) {
-		//pFahrzeug->setGesamtTime(0);
 		return 0.0;
 	}
 	else

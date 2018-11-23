@@ -3,6 +3,11 @@
 //static Variable zur Durchnumerierung definieren
 int Fahrzeug::p_iMaxID = 0;
 
+inline bool bEqual(double x, double y)
+{
+	return (fabs(x - y) < 1e-6);
+}
+
 void Fahrzeug::vInitialisierung() {
 	p_iID = ++p_iMaxID;
 	p_sName = "";
@@ -57,16 +62,12 @@ void Fahrzeug::vAusgabeKopf() {
 
 void Fahrzeug::vAbfertigung()
 {
-	//Wenn schon abgefertigt, nicht machen
-	if (dGlobaleZeit == this->p_dZeit) {
-
-	}
-	// sonst abfertigen
-	else {
+	//Wenn schon abgefertigt, nicht machen, sonst abfertigen
+	if (!bEqual(dGlobaleZeit, this->p_dZeit)) {
 		double dDelta = dGlobaleZeit - this->p_dZeit;
 		this->p_dGesamtStrecke += this->dGeschwindigkeit() * dDelta;	// s = v*t
 		this->p_dZeit = dGlobaleZeit;
-		this->p_dGesamtZeit += dDelta;									// +ZeitDiff	 
+		this->p_dGesamtZeit += dDelta;									// +ZeitDiff	
 	}
 }
 
@@ -104,6 +105,6 @@ Fahrzeug& Fahrzeug::operator=(const Fahrzeug& fahrzeug)
 	this->vInitialisierung();			//Fahrzeug zurücksetzen mit neuer ID, wichtig zur Identifikation
 	this->p_sName = fahrzeug.p_sName;	//Namen kopieren (Es gibt ja mehrere gleiche Autos.. gleiche Modellnummer etc..)
 	this->p_dMaxGeschwindigkeit = fahrzeug.p_dMaxGeschwindigkeit; //selbe Begründung wie Name
-		
+
 	return *this;	//This-Pointer, da Referenz
 }
