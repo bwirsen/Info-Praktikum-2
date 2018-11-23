@@ -7,6 +7,7 @@ class PKW :
 public:
 
 	PKW(string name, double vMax, double vb, double vTank = 55);
+	PKW();
 	~PKW();
 	double dTanken(double dMenge = -1);
 	void vAbfertigung();
@@ -14,6 +15,7 @@ public:
 	double dGeschwindigkeit();
 	void vZeichnen(Weg * pWeg);
 	ostream& ostreamAusgabe(ostream& out);
+	istream& istreamEingabe(istream& in);
 
 private:
 	double p_dVerbrauch;

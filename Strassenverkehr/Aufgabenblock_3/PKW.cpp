@@ -8,6 +8,10 @@ p_dVerbrauch(vb), p_dTankvolumen(vTank)
 	p_dTankinhalt = p_dTankvolumen / 2;
 }
 
+PKW::PKW(): Fahrzeug(), p_dVerbrauch(0), p_dTankvolumen(0), p_dTankinhalt(0)
+{
+}
+
 
 PKW::~PKW()
 {
@@ -76,20 +80,23 @@ void PKW::vAusgabe() {
 double PKW::dGeschwindigkeit() {
 	
 	//Geschwindigkietslimit aus dem Verhalten, bzw dem Weg im Verhalten ziehen - wichtig enum, daher switch möglich.
-	Begrenzung p_eLimit = this->p_pVerhalten->getWegPointer()->getBegrenzung();
-	
-	switch (p_eLimit) {
+	if (this->p_pVerhalten != nullptr) {
 
-	case 0: return 50; //Innerorts
-		break;
-	case 1: return 100;	//Landstraße
-		break;
-	case 2:	return this->p_dMaxGeschwindigkeit;	//Autobahn
-		break;
-	default:			//Tritt nicht auf, aber zu Fehlererkennung nützlich
-		return 0;
+		Begrenzung p_eLimit = this->p_pVerhalten->getWegPointer()->getBegrenzung();
 
+		switch (p_eLimit) {
+
+		case 0: return 50; //Innerorts
+			break;
+		case 1: return 100;	//Landstraße
+			break;
+		case 2:	return this->p_dMaxGeschwindigkeit;	//Autobahn
+			break;
+		default:			//Tritt nicht auf, aber zu Fehlererkennung nützlich
+			return 0;
+		}
 	}
+	return 0;
 }
 
 void PKW::vZeichnen(Weg* pWeg) {
@@ -104,4 +111,10 @@ ostream& PKW::ostreamAusgabe(ostream& out) {
 	Fahrzeug::ostreamAusgabe(out) << setprecision(2) << fixed << setw(12) << setiosflags(ios::left) << this->p_dVerbrauch << setw(12) << this->p_dTankinhalt;
 
 	return out;
+}
+
+istream & PKW::istreamEingabe(istream & in)
+{
+	Fahrzeug::istreamEingabe(in) >> this->p_dVerbrauch >> this->p_dTankvolumen;
+	return in;
 }

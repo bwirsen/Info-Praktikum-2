@@ -12,9 +12,11 @@ class Kreuzung :
 public:
 	//Konstruktor und Dekonstruktor
 	Kreuzung(string sName, double dTankstelle = 0);
+	Kreuzung();
 	~Kreuzung();
-	//Stream-‹berladung zur Ausgabe der Kreuzung mit cout
+	//Stream-‹berladung zur Ausgabe und der Eingabe der Kreuzung mit cout/cin
 	ostream & ostreamAusgabe(ostream & out);
+	istream& istreamEingabe(istream& in);
 	//Funktion zum Verbinden zweier Kreuzungen, Straﬂen werden automatisch erzeugt
 	void vVerbinde(string sWegHin, string sWegRueck, double dWegLaenge, Kreuzung* pKreuzung, bool bUeberholverbot = true, Begrenzung eLimit = Autobahn);
 	//Funktion zum (voll)tanken der Fahrzeuge

@@ -10,6 +10,10 @@ Kreuzung::Kreuzung(string sName, double dTankstelle) : AktivesVO(sName), p_dTank
 {
 }
 
+Kreuzung::Kreuzung() : AktivesVO(), p_dTankstelle(0)
+{
+}
+
 Kreuzung::~Kreuzung()
 {
 }
@@ -28,6 +32,12 @@ ostream& Kreuzung::ostreamAusgabe(ostream& out)
 	out << ")";
 
 	return out; //Streamvariable returnen 
+}
+
+istream & Kreuzung::istreamEingabe(istream & in)
+{
+	AktivesVO::istreamEingabe(in) >> this->p_dTankstelle;
+	return in;
 }
 
 void Kreuzung::vVerbinde(string sWegHin, string sWegRueck, double dWegLaenge, Kreuzung* pKreuzung, bool bUeberholverbot, Begrenzung eLimit)

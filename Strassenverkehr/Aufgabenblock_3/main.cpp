@@ -2,6 +2,7 @@
 #include <string>
 #include <stdlib.h> 
 #include <vector>
+#include <fstream>
 
 #include "Fahrrad.h"
 #include "Fahrzeug.h"
@@ -23,10 +24,7 @@ void vAufgabe_6();
 void vAufgabe_6a();
 void vAufgabe_7();
 void vAufgabe_8();
-
-/*Überladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu können. Allgemeine Definition 
-in der main.cpp, da jede Überladung speziell in jeder Subklasse definiert werden muss */
-ostream& operator << (ostream& out, AktivesVO& aVO);
+void vAufgabe_9();
 
 extern double dGlobaleZeit = 0.0;
 
@@ -62,7 +60,9 @@ int main(void) {
 			break;
 		case '7' : vAufgabe_7();
 			break;
-		case '8': vAufgabe_8();
+		case '8' : vAufgabe_8();
+			break;
+		case '9' : vAufgabe_9();
 			break;
 		case 'q':
 			return 0;
@@ -430,7 +430,6 @@ void vAufgabe_8()
 	PKW pkw3("Tesla", 250, 0);
 	Fahrrad fr1("KTM", 35);
 	Fahrrad fr2("BMC", 50);
-	
 	bInitialisiereGrafik(1200, 720); //starte Server
 
 	kr1.vVerbinde("W12", "W21", 40, &kr2, true, Innerorts);		    // 1
@@ -491,13 +490,27 @@ void vAufgabe_8()
 
 	vBeendeGrafik();
 }
-	
-ostream& operator << (std::ostream& out, AktivesVO& aVO)
-{
-	//übergabe von out an die Memberüberladungen, damit out gefüllt wird
-	return aVO.ostreamAusgabe(out);
-}
 
+void vAufgabe_9()
+{
+	ifstream infile("VO.dat");
+
+	PKW pkw1;
+	Fahrrad fr1;
+	Kreuzung kr1;
+
+	try
+	{
+		infile >> pkw1 >> fr1 >> kr1;
+		cout << pkw1 << endl << fr1 << endl << kr1 << endl;
+	}
+	catch (string caught)
+	{
+		cout << caught;
+	}
+	
+}
+	
 void vWait() {
 
 	cin.ignore();

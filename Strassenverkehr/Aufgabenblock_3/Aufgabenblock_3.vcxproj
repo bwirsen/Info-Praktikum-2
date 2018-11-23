@@ -149,6 +149,10 @@
   <ItemGroup>
     <Library Include="SimuClient.lib" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Simu.dat" />
+    <None Include="VO.dat" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

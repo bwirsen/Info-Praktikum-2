@@ -3,7 +3,7 @@
 int AktivesVO::p_iMaxID = 0;
 AktivesVO::AktivesVO() 
 {
-
+	vInitialisierung();
 }
 
 AktivesVO::AktivesVO(string name)
@@ -34,6 +34,26 @@ ostream& AktivesVO::ostreamAusgabe(ostream & out)
 		<< setw(4) << ":";
 
 	return out;
+}
+
+ostream& operator << (std::ostream& out, AktivesVO& aVO)
+{
+	//übergabe von out an die Memberüberladungen, damit out gefüllt wird
+	return aVO.ostreamAusgabe(out);
+}
+
+istream & operator >> (istream & in, AktivesVO & aVO)
+{
+	return aVO.istreamEingabe(in);
+}
+
+istream & AktivesVO::istreamEingabe(istream & in)
+{
+	if (this->p_sName != "") throw string("Exception: Name des Verkerhsobjekt war nicht leer!");
+	
+	in >> this->p_sName;
+
+	return in;
 }
 
 string AktivesVO::getName() {

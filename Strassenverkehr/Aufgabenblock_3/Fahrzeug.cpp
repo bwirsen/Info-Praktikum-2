@@ -25,6 +25,10 @@ Fahrzeug::Fahrzeug(string name, double vMax) : AktivesVO(name)
 	p_dMaxGeschwindigkeit = vMax;
 }
 
+Fahrzeug::Fahrzeug() : AktivesVO()
+{
+	vInitialisierung();
+}
 
 Fahrzeug::~Fahrzeug()
 {
@@ -83,6 +87,12 @@ ostream& Fahrzeug::ostreamAusgabe(ostream& out)
 		<< setw(14) << this->p_dGesamtZeit << setw(8) << this->p_dZeit;
 
 	return out;
+}
+
+istream & Fahrzeug::istreamEingabe(istream & in)
+{
+	AktivesVO::istreamEingabe(in) >> this->p_dMaxGeschwindigkeit;
+	return in;
 }
 
 bool Fahrzeug::operator<(const Fahrzeug& fahrzeug)

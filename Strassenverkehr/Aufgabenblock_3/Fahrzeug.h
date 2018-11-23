@@ -15,6 +15,7 @@ public:
 
 	Fahrzeug(string name);
 	Fahrzeug(string name, double vMax);
+	Fahrzeug();
 	virtual ~Fahrzeug();
 	static void vAusgabeKopf();
 	virtual void vAusgabe();
@@ -22,6 +23,7 @@ public:
 	virtual double dTanken(double dMenge = -1);
 	virtual double dGeschwindigkeit();
 	virtual ostream& ostreamAusgabe(ostream& out);
+	virtual istream& istreamEingabe(istream& in);
 	virtual bool operator<(const Fahrzeug& fahrzeug);
 	virtual void vNeueStrecke(Weg* pWeg);
 	virtual void vNeueStrecke(Weg* pWeg, double dStartzeitpunkt);
