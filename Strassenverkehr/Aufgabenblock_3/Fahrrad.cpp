@@ -41,6 +41,7 @@ void Fahrrad::vZeichnen(Weg* pWeg) {
 
 istream & Fahrrad::istreamEingabe(istream & in)
 {
+	cout << "Eingabe Fahrrad: Name, V_max" << endl;
 	AktivesVO::istreamEingabe(in) >> this->p_dMaxGeschwindigkeit;
 	return in;
 }

@@ -115,6 +115,7 @@ ostream& PKW::ostreamAusgabe(ostream& out) {
 
 istream & PKW::istreamEingabe(istream & in)
 {
+	cout << "Eingabe PKW: Name, V_max, Verbrauch, Volumen" << endl;
 	Fahrzeug::istreamEingabe(in) >> this->p_dVerbrauch >> this->p_dTankvolumen;
 	return in;
 }

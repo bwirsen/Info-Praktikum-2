@@ -39,7 +39,7 @@ int main(void) {
 	char cAuswahl;
 	while (true) {
 
-		cout << "Aufgabe 1, 2, 3, 4, 5, 6, 6a (a), 7, 8? Beenden (q). Warnung: Aufgabenblock 3" << endl;
+		cout << "Aufgabe 1, 2, 3, 4, 5, 6, 6a (a), 7, 8, 9? Beenden (q). Warnung: Aufgabenblock 3" << endl;
 		cin >> cAuswahl;
 
 		switch (cAuswahl) {
@@ -498,10 +498,13 @@ void vAufgabe_9()
 	PKW pkw1;
 	Fahrrad fr1;
 	Kreuzung kr1;
-
+	
 	try
 	{
-		infile >> pkw1 >> fr1 >> kr1;
+		infile >> pkw1;
+		infile >> fr1;
+		infile >> kr1;
+		Fahrzeug::vAusgabeKopf();
 		cout << pkw1 << endl << fr1 << endl << kr1 << endl;
 	}
 	catch (string caught)

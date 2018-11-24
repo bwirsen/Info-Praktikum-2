@@ -36,6 +36,7 @@ ostream& Kreuzung::ostreamAusgabe(ostream& out)
 
 istream & Kreuzung::istreamEingabe(istream & in)
 {
+	cout << "Eingabe Kreuzung: Name, Tankstellenvolumen" << endl;
 	AktivesVO::istreamEingabe(in) >> this->p_dTankstelle;
 	return in;
 }
