@@ -12,9 +12,7 @@ void vAufgabe_1_deb();
 void vAufgabe_2();
 void vAufgabe_3();
 
-//Überladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu können. Allgemeine Definition 
-//in der main.cpp, da jede Überladung speziell in jeder Subklasse definiert werden muss
-ostream& operator << (ostream& out, Fahrzeug& fahrzeug);
+
 
 inline bool bEqual(double x, double y)
 {
@@ -60,6 +58,7 @@ void vAufgabe_1()
 	Fahrzeug* f1 = new Fahrzeug("BMW", 220);
 	Fahrzeug* f2 = new Fahrzeug("Mercedes", 250);
 	Fahrzeug* f3 = new Fahrzeug("Porsche", 300);
+	Fahrzeug f4("Jaguar", 200);
 
 	f1->vAusgabeKopf();
 	cout << endl;
@@ -197,11 +196,7 @@ void vAufgabe_3() {
 
 
 }
-ostream& operator << (std::ostream& out, Fahrzeug& fahrzeug)
-{
-	//übergabe von out an die Memberüberladungen, damit out gefüllt wird
-	return fahrzeug.ostreamAusgabe(out);
-}
+
 
 void wait() {
 
