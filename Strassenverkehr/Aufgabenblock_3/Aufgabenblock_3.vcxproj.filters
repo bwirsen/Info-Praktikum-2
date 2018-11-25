@@ -60,6 +60,9 @@
     <ClInclude Include="Kreuzung.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="Welt.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AktivesVO.cpp">
@@ -101,6 +104,9 @@
     <ClCompile Include="Kreuzung.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="Welt.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="SimuClient.lib" />
@@ -108,5 +114,6 @@
   <ItemGroup>
     <None Include="Simu.dat" />
     <None Include="VO.dat" />
+    <None Include="SimuDisplay.dat" />
   </ItemGroup>
 </Project>

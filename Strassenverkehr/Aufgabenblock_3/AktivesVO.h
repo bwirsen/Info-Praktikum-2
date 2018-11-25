@@ -2,8 +2,13 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <map>
 #include "SimuClient.h"
+
+
 using namespace std;
+
+//typedef map<string, AktivesVO*> Map;
 
 class AktivesVO
 {
@@ -16,6 +21,9 @@ public:
 	virtual ostream& ostreamAusgabe(ostream& out);
 	virtual istream& istreamEingabe(istream& in);
 	string getName();
+	static AktivesVO* ptObjekt(string sName);
+	static void clearMap();
+
 protected:
 	double p_dZeit;
 	string p_sName;
@@ -23,6 +31,7 @@ protected:
 
 private:
 	static int p_iMaxID;
+	static map<string, AktivesVO*> VOMap;
 	void vInitialisierung();
 };
 

@@ -3,7 +3,6 @@
 #include <stdlib.h> 
 #include <vector>
 #include <fstream>
-
 #include "Fahrrad.h"
 #include "Fahrzeug.h"
 #include "PKW.h"
@@ -12,6 +11,7 @@
 #include "LazyAktion.h"
 #include "LazyListe.h"
 #include "Kreuzung.h"
+#include "Welt.h"
 
 void vWait();
 void vAufgabe_1();
@@ -25,6 +25,7 @@ void vAufgabe_6a();
 void vAufgabe_7();
 void vAufgabe_8();
 void vAufgabe_9();
+void vAufgabe_9sim();
 
 extern double dGlobaleZeit = 0.0;
 
@@ -33,13 +34,12 @@ inline bool bEqual(double x, double y)
 	return (fabs(x - y) < 1e-6);
 }
 
-
 int main(void) {
 
 	char cAuswahl;
 	while (true) {
 
-		cout << "Aufgabe 1, 2, 3, 4, 5, 6, 6a (a), 7, 8, 9? Beenden (q). Warnung: Aufgabenblock 3" << endl;
+		cout << "Aufgabe 1, 2, 3, 4, 5, 6, 6a (a), 7, 8, 9, 9sim (s)? Beenden (q). Warnung: Aufgabenblock 3" << endl;
 		cin >> cAuswahl;
 
 		switch (cAuswahl) {
@@ -63,6 +63,8 @@ int main(void) {
 		case '8' : vAufgabe_8();
 			break;
 		case '9' : vAufgabe_9();
+			break;
+		case 's': vAufgabe_9sim();
 			break;
 		case 'q':
 			return 0;
@@ -498,6 +500,7 @@ void vAufgabe_9()
 	PKW pkw1;
 	Fahrrad fr1;
 	Kreuzung kr1;
+	Kreuzung kr2;
 	
 	try
 	{
@@ -505,19 +508,73 @@ void vAufgabe_9()
 		infile >> fr1;
 		infile >> kr1;
 		Fahrzeug::vAusgabeKopf();
-		cout << pkw1 << endl << fr1 << endl << kr1 << endl;
+		cout << pkw1 << endl << fr1 << endl << kr1 << endl << kr2 << endl;
+		
 	}
 	catch (string caught)
 	{
-		cout << caught;
+		cout << caught << endl;
+	}
+
+}
+
+void vAufgabe_9sim()
+{
+	Welt welt;
+	char c;
+	cout << "Grafik? j/n" << endl;
+	cin >> c;
+
+	switch (c)
+	{
+		case 'n' : 
+		{
+			ifstream infile("Simu.dat");
+
+			try
+			{
+				welt.vEinlesen(infile);
+			}
+
+			catch (string caught)
+			{
+				cout << caught << endl;
+			}
+		}
+		break;
+
+		case 'j':
+		{
+			ifstream infile("SimuDisplay.dat");
+
+			try
+			{
+				bInitialisiereGrafik(1200, 1000);
+				welt.vEinlesenMitGrafik(infile);
+			}
+
+			catch (string caught)
+			{
+				cout << caught << endl;
+			}
+		}
+		break;
 	}
 	
+	Fahrzeug::vAusgabeKopf();
+	for (dGlobaleZeit = 0; dGlobaleZeit <= 100; dGlobaleZeit += 0.05)
+	{
+		welt.vSimulation();
+		cout << *(AktivesVO::ptObjekt("Trabant")) << endl << *(AktivesVO::ptObjekt("Mercedes")) << 
+			endl << *(AktivesVO::ptObjekt("Ferrari")) << endl << *(AktivesVO::ptObjekt("Porsche")) << endl
+			 << *(AktivesVO::ptObjekt("BMX")) << endl << *(AktivesVO::ptObjekt("Peugeot")) << endl;
+	}
+	cout << "Loesche map..." << endl;
+	AktivesVO::clearMap();
 }
 	
-void vWait() {
-
+void vWait()
+{
 	cin.ignore();
 	cin.ignore();
 }
-
-

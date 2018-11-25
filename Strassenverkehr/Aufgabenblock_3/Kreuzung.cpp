@@ -80,6 +80,7 @@ void Kreuzung::vAnnahme(Fahrzeug* pFahrzeug, double dParkzeit)
 	//volltanken
 	this->vTanken(pFahrzeug);
 	//und an ersten Weg in der Liste übergeben
+	if (this->p_pWege.empty()) throw string("Exception: Keine Wege an dieser Kreuzung");
 	this->p_pWege.front()->vAnnahme(pFahrzeug, dParkzeit);
 }
 

@@ -8,7 +8,7 @@ p_dVerbrauch(vb), p_dTankvolumen(vTank)
 	p_dTankinhalt = p_dTankvolumen / 2;
 }
 
-PKW::PKW(): Fahrzeug(), p_dVerbrauch(0), p_dTankvolumen(0), p_dTankinhalt(0)
+PKW::PKW(): Fahrzeug(), p_dVerbrauch(0), p_dTankvolumen(), p_dTankinhalt()
 {
 }
 
@@ -86,14 +86,14 @@ double PKW::dGeschwindigkeit() {
 
 		switch (p_eLimit) {
 
-		case 0: return 50; //Innerorts
+		case Innerorts: return 50; //Innerorts
 			break;
-		case 1: return 100;	//Landstraße
+		case Landstraße: return 100;	//Landstraße
 			break;
-		case 2:	return this->p_dMaxGeschwindigkeit;	//Autobahn
+		case Autobahn:	return this->p_dMaxGeschwindigkeit;	//Autobahn
 			break;
 		default:			//Tritt nicht auf, aber zu Fehlererkennung nützlich
-			return 0;
+			return 301;
 		}
 	}
 	return 0;
@@ -117,5 +117,6 @@ istream & PKW::istreamEingabe(istream & in)
 {
 	cout << "Eingabe PKW: Name, V_max, Verbrauch, Volumen" << endl;
 	Fahrzeug::istreamEingabe(in) >> this->p_dVerbrauch >> this->p_dTankvolumen;
+	this->p_dTankinhalt = this->p_dTankvolumen / 2;
 	return in;
 }

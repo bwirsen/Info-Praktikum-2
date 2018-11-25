@@ -31,9 +31,7 @@ public:
 	Fahrzeug& operator=(const Fahrzeug & fahrzeug);
 	double getMaxGeschwindigkeit();
 	double getAbschnittStrecke();
-
 	void setTime(double dTime);
-
 	void setGesamtTime(double dTime);
 
 
@@ -47,4 +45,3 @@ protected:
 private:
 	void vInitialisierung();
 };
-
