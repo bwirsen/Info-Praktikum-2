@@ -46,3 +46,6 @@ private:
 	
 };
 
+//Überladung des Streamoperators << um Fahrzeuge und Subklassen davon direkt ausgeben zu können. Allgemeine Definition 
+//in der main.cpp, da jede Überladung speziell in jeder Subklasse definiert werden muss
+ostream& operator << (ostream& out, Fahrzeug& fahrzeug);

@@ -108,3 +108,9 @@ Fahrzeug& Fahrzeug::operator=(const Fahrzeug& fahrzeug)
 
 	return *this;	//This-Pointer, da Referenz
 }
+
+ostream& operator << (std::ostream& out, Fahrzeug& fahrzeug)
+{
+	//übergabe von out an die Memberüberladungen, damit out gefüllt wird
+	return fahrzeug.ostreamAusgabe(out);
+}
