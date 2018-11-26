@@ -534,6 +534,16 @@ void vAufgabe_9sim()
 			try
 			{
 				welt.vEinlesen(infile);
+				Fahrzeug::vAusgabeKopf();
+				for (dGlobaleZeit = 0; dGlobaleZeit <= 100; dGlobaleZeit += 0.05)
+				{
+					welt.vSimulation();
+					cout << *(AktivesVO::ptObjekt("Trabant")) << endl << *(AktivesVO::ptObjekt("Mercedes")) <<
+						endl << *(AktivesVO::ptObjekt("Ferrari")) << endl << *(AktivesVO::ptObjekt("Porsche")) << endl
+						<< *(AktivesVO::ptObjekt("BMX")) << endl << *(AktivesVO::ptObjekt("Peugeot")) << endl;
+				}
+				cout << "Loesche map..." << endl;
+				AktivesVO::clearMap();
 			}
 
 			catch (string caught)
@@ -551,6 +561,16 @@ void vAufgabe_9sim()
 			{
 				bInitialisiereGrafik(1200, 1000);
 				welt.vEinlesenMitGrafik(infile);
+				Fahrzeug::vAusgabeKopf();
+				for (dGlobaleZeit = 0; dGlobaleZeit <= 100; dGlobaleZeit += 0.05)
+				{
+					welt.vSimulation();
+					cout << *(AktivesVO::ptObjekt("Trabant")) << endl << *(AktivesVO::ptObjekt("Mercedes")) <<
+						endl << *(AktivesVO::ptObjekt("Ferrari")) << endl << *(AktivesVO::ptObjekt("Porsche")) << endl
+						<< *(AktivesVO::ptObjekt("BMX")) << endl << *(AktivesVO::ptObjekt("Peugeot")) << endl;
+				}
+				cout << "Loesche map..." << endl;
+				AktivesVO::clearMap();
 			}
 
 			catch (string caught)
@@ -561,16 +581,6 @@ void vAufgabe_9sim()
 		break;
 	}
 	
-	Fahrzeug::vAusgabeKopf();
-	for (dGlobaleZeit = 0; dGlobaleZeit <= 100; dGlobaleZeit += 0.05)
-	{
-		welt.vSimulation();
-		cout << *(AktivesVO::ptObjekt("Trabant")) << endl << *(AktivesVO::ptObjekt("Mercedes")) << 
-			endl << *(AktivesVO::ptObjekt("Ferrari")) << endl << *(AktivesVO::ptObjekt("Porsche")) << endl
-			 << *(AktivesVO::ptObjekt("BMX")) << endl << *(AktivesVO::ptObjekt("Peugeot")) << endl;
-	}
-	cout << "Loesche map..." << endl;
-	AktivesVO::clearMap();
 }
 	
 void vWait()

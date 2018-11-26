@@ -39,6 +39,9 @@ void Welt::vEinlesen(istream& in)
 			in >> sQuellKreuzung >> sZielKreuzung >> sWegHin >> sWegRueck >> dWegLaenge >> iLimit >> bUeberholverbot;
 
 			if (iLimit > 3 || iLimit < 0) throw string("Exception: Begrenzung!");
+			if(bUeberholverbot != false)
+				if(bUeberholverbot != true)
+					throw string("Exception: Ueberholverbot!");
 
 			pQuellKreuzung = (Kreuzung*)AktivesVO::ptObjekt(sQuellKreuzung); //typecast, damit kein Fehler entsteht
 			pZielKreuzung = (Kreuzung*)AktivesVO::ptObjekt(sZielKreuzung);
@@ -105,6 +108,9 @@ void Welt::vEinlesenMitGrafik(istream & in)
 			in >> sQuellKreuzung >> sZielKreuzung >> sWegHin >> sWegRueck >> dWegLaenge >> iLimit >> bUeberholverbot >> iAnzahlKoordinaten;
 
 			if (iLimit > 3 || iLimit < 0) throw string("Exception: Begrenzung!");
+			if (bUeberholverbot != false)
+				if (bUeberholverbot != true)
+					throw string("Exception: Ueberholverbot!");
 		
 			pQuellKreuzung = (Kreuzung*)AktivesVO::ptObjekt(sQuellKreuzung); //typecast, damit kein Fehler entsteht
 			pZielKreuzung = (Kreuzung*)AktivesVO::ptObjekt(sZielKreuzung);
