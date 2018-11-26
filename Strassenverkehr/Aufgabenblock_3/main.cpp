@@ -538,17 +538,18 @@ void vAufgabe_9sim()
 				for (dGlobaleZeit = 0; dGlobaleZeit <= 100; dGlobaleZeit += 0.05)
 				{
 					welt.vSimulation();
-					cout << *(AktivesVO::ptObjekt("Trabant")) << endl << *(AktivesVO::ptObjekt("Mercedes")) <<
-						endl << *(AktivesVO::ptObjekt("Ferrari")) << endl << *(AktivesVO::ptObjekt("Porsche")) << endl
-						<< *(AktivesVO::ptObjekt("BMX")) << endl << *(AktivesVO::ptObjekt("Peugeot")) << endl;
+					
 				}
 				cout << "Loesche map..." << endl;
 				AktivesVO::clearMap();
+				
 			}
 
 			catch (string caught)
 			{
 				cout << caught << endl;
+				cout << "Loesche map..." << endl;
+				AktivesVO::clearMap();
 			}
 		}
 		break;
@@ -571,11 +572,14 @@ void vAufgabe_9sim()
 				}
 				cout << "Loesche map..." << endl;
 				AktivesVO::clearMap();
+				
 			}
 
 			catch (string caught)
 			{
 				cout << caught << endl;
+				cout << "Loesche map..." << endl;
+				AktivesVO::clearMap();
 			}
 		}
 		break;

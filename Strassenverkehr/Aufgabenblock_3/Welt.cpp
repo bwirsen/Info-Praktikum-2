@@ -33,20 +33,24 @@ void Welt::vEinlesen(istream& in)
 			string sWegHin, sWegRueck, sQuellKreuzung, sZielKreuzung;
 			double dWegLaenge;
 			Kreuzung *pQuellKreuzung, *pZielKreuzung;
-			bool bUeberholverbot;
+			int iUeberholverbot;
 			int iLimit;
 
-			in >> sQuellKreuzung >> sZielKreuzung >> sWegHin >> sWegRueck >> dWegLaenge >> iLimit >> bUeberholverbot;
+			in >> sQuellKreuzung >> sZielKreuzung >> sWegHin >> sWegRueck >> dWegLaenge >> iLimit >> iUeberholverbot;
 
-			if (iLimit > 3 || iLimit < 0) throw string("Exception: Begrenzung!");
-			if(bUeberholverbot != false)
-				if(bUeberholverbot != true)
+			if (iLimit > 3 || iLimit < 0) { throw string("Exception: Begrenzung!"); }
+			if (iUeberholverbot != 0)
+			{
+				if (iUeberholverbot != 1)
+				{
 					throw string("Exception: Ueberholverbot!");
+				}
+			}
 
 			pQuellKreuzung = (Kreuzung*)AktivesVO::ptObjekt(sQuellKreuzung); //typecast, damit kein Fehler entsteht
 			pZielKreuzung = (Kreuzung*)AktivesVO::ptObjekt(sZielKreuzung);
 
-			pQuellKreuzung->vVerbinde(sWegHin, sWegRueck, dWegLaenge, pZielKreuzung, bUeberholverbot, (Begrenzung)(iLimit-1));	 
+			pQuellKreuzung->vVerbinde(sWegHin, sWegRueck, dWegLaenge, pZielKreuzung, (bool)iUeberholverbot, (Begrenzung)(iLimit-1));	 
 		}
 		else if (key == "PKW")
 		{
@@ -101,20 +105,21 @@ void Welt::vEinlesenMitGrafik(istream & in)
 			string sWegHin, sWegRueck, sQuellKreuzung, sZielKreuzung;
 			double dWegLaenge;
 			Kreuzung *pQuellKreuzung, *pZielKreuzung;
-			bool bUeberholverbot;
+			int iUeberholverbot;
 			int iAnzahlKoordinaten, iLimit;
 			int iCoords[ANZAHL_KOORDINATEN] = { 0 };
 			
-			in >> sQuellKreuzung >> sZielKreuzung >> sWegHin >> sWegRueck >> dWegLaenge >> iLimit >> bUeberholverbot >> iAnzahlKoordinaten;
+			in >> sQuellKreuzung >> sZielKreuzung >> sWegHin >> sWegRueck >> dWegLaenge >> iLimit >> iUeberholverbot >> iAnzahlKoordinaten;
 
-			if (iLimit > 3 || iLimit < 0) throw string("Exception: Begrenzung!");
-			if (bUeberholverbot != false)
-				if (bUeberholverbot != true)
-					throw string("Exception: Ueberholverbot!");
+			if (iLimit > 3 || iLimit < 0) { throw string("Exception: Begrenzung!"); }
+			if (iUeberholverbot != 0) {
+				{ if (iUeberholverbot != 1)
+					throw string("Exception: Ueberholverbot!"); }
+			}
 		
 			pQuellKreuzung = (Kreuzung*)AktivesVO::ptObjekt(sQuellKreuzung); //typecast, damit kein Fehler entsteht
 			pZielKreuzung = (Kreuzung*)AktivesVO::ptObjekt(sZielKreuzung);
-			pQuellKreuzung->vVerbinde(sWegHin, sWegRueck, dWegLaenge, pZielKreuzung, bUeberholverbot, (Begrenzung)(iLimit-1));
+			pQuellKreuzung->vVerbinde(sWegHin, sWegRueck, dWegLaenge, pZielKreuzung, (bool)iUeberholverbot, (Begrenzung)(iLimit-1));
 			
 			//Array der Koordinaten füllen
 			for (int i = 0; i < 2*iAnzahlKoordinaten; i++)
