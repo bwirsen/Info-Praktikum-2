@@ -41,6 +41,7 @@ int main(void) {
 		case '6' : vAufgabe_6();
 			break;
 		case 'a': vAufgabe_6a();
+			break;
 		case 'q':
 			return 0;
 		default:
@@ -135,13 +136,13 @@ void vAufgabe_6()
 
 	PKW* pkw1 = new PKW("Audi", 220, 4);
 	PKW* pkw2 = new PKW("BMW", 240, 5);
-	//Fahrrad* fr1 = new Fahrrad("KTM", 30);
+	Fahrrad* fr1 = new Fahrrad("KTM", 30);
 	PKW* pkw3 = new PKW("Porsche", 250, 6);
 	PKW* pkw4 = new PKW("Tesla", 220, 0);
 
 	weg1->vAnnahme(pkw1);
 	weg1->vAnnahme(pkw2, 2);
-	//weg1->vAnnahme(fr1);
+	weg1->vAnnahme(fr1);
 	weg2->vAnnahme(pkw3);
 	weg2->vAnnahme(pkw4, 4);
 
@@ -161,13 +162,13 @@ void vAufgabe_6()
 		weg1->vAbfertigung();
 		weg2->vAbfertigung();
 
-		cout <<*pkw1 << endl << *pkw2 << endl << *pkw3 << endl << *pkw4 << endl << endl;
+		cout <<*pkw1 << endl << *pkw2 << endl << *pkw3 << endl << *pkw4 << endl << *weg1 << endl << *weg2 << endl;
 
 		pkw1->vZeichnen(weg1);
 		pkw2->vZeichnen(weg1);
 		pkw3->vZeichnen(weg2);
 		pkw4->vZeichnen(weg2);
-		//fr1->vZeichnen(weg1);
+		fr1->vZeichnen(weg1);
 
 		vSleep(500);		//warten 500ms
 
